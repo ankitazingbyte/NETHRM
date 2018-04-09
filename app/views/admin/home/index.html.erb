@@ -1,0 +1,248 @@
+<section class="wrapper-bottom-sec">
+    <div class="p-30"></div>
+    <div class="p-15 p-t-none p-b-none">    
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel-body">
+                    <div class="row text-center">
+                        <div class="col-sm-3 m-b-15">
+                            <div class="bg-success text-white" style="height: 140px;">
+                                <span class="pull-left cls"><i class="fa fa-users"></i></span>
+                                <div class="pull-right" style="font-size: 25px;">
+                                    <span class="small">Employees</span>
+                                    <br>
+                                    <%#= link_to "Add New", new_admin_employee_path, class: "btn btn-info btn-xs text-uppercase btn-new" %>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 m-b-15">
+                            <div class="bg-info text-white" style="height: 140px;">
+                                <span class="pull-left cls"><i class="fa fa-bed"></i></span>
+                                <div class="pull-right" style="font-size: 15px;">
+                                    <span class="small">Leave Application</span>
+                                    <br>
+                                    <%#=link_to "View All", admin_leaves_path, class: "btn btn-success btn-xs text-uppercase btn-new" %>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 m-b-15">
+                            <div class="bg-primary text-white" style="height: 140px;">
+                                <span class="pull-left cls"><i class="fa fa-bar-chart"></i></span>
+                                <div class="pull-right" style="font-size: 15px;">
+                                    <span class="small">Expense Request</span>
+                                    <br>
+                                   <%#=link_to "View All", admin_expenses_path, class: "btn btn-info btn-xs text-uppercase btn-new" %>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 m-b-15">
+                            <div class="bg-warning text-white " style="height: 140px;">
+                                <span class="pull-left cls"><i class="fa fa-envelope"></i></span>
+                                <div class="pull-right" style="font-size: 15px;">
+                                    <span class="small">Support Tickets</span>
+                                    <br>
+                                    <%#=link_to "View All", admin_tickets_path, class: "btn btn-success btn-xs text-uppercase btn-new" %>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="p-15 p-t-none p-b-none">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="panel">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Support Tickets</h3>
+                            </div>
+                            <div class="panel-body p-none">
+                                <div id="supportTickets" style="width:100%; height:400px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="panel">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Expense</h3>
+                            </div>
+                            <div class="panel-body p-none">
+                                <div id="expense" style="width:100%; height:400px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <div class="p-15 p-t-none p-b-none">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="panel">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Recent Leave Application</h3>
+                            </div>
+                            <div class="panel-body p-none">
+                                <table class="table table-hover table-ultra-responsive">
+                                    <thead>
+                                        <tr>
+                                            <th style="width: 10px;">SL#</th>
+                                            <th style="width: 30px;">Employee</th>
+                                            <th style="width: 30px;">Leave Type</th>
+                                            <th style="width: 15px;">Leave From</th>
+                                            <th style="width: 15px;">Leave To</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <%# @admin_leaves.each do |admin_leave| %>
+                                            <tr>
+                                                <td data-label="SL">
+                                                    <p>49</p>
+                                                </td>
+                                                <td data-label="employee">
+                                                    <p><%#= admin_leave.admin_employee_id %></a></p>
+                                                </td>
+                                                <td data-label="leave type">
+                                                    <p><%#= admin_leave.leave_type %></p>
+                                                </td>
+                                                <td data-label="leave from">
+                                                    <p><%#= admin_leave.leave_from %></p>
+                                                </td>
+                                                <td data-label="leave to">
+                                                    <p><%#= admin_leave.leave_to %></p>
+                                                </td>
+                                            </tr>
+                                        <%# end %>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="panel">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Recent Expense Request</h3>
+                            </div>
+                            <div class="panel-body p-none">
+                                <table class="table table-hover table-ultra-responsive">
+                                    <thead>
+                                    <tr>
+                                        <th style="width: 30px;">Item Name</th>
+                                        <th style="width: 30px;">Purchase By</th>
+                                        <th style="width: 20px;">Purchase Date</th>
+                                        <th style="width: 20px;">Amount</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                        <%# @admin_expenses.each do |admin_expense| %>
+                                        	<tr>
+                                                <td data-label="item name">
+                                                    <p><%#= admin_expense.item_name %></p>
+                                                </td>
+                                                <td data-label="purchase by">
+                                                    <p><%#= admin_expense.purchase_from %></p>
+                                                </td>
+                                                <td data-label="purchase date">
+                                                    <p><%#= admin_expense.purchase_date %></p>
+                                                </td>
+                                                <td data-label="amount">
+                                                    <p><%#= admin_expense.amount %></p>
+                                                </td>
+                                            </tr>
+                                        <%# end %>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="p-15 p-t-none p-b-none">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="panel">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Recent Tasks</h3>
+                            </div>
+                            <div class="panel-body p-none">
+                                <table class="table table-hover table-ultra-responsive">
+                                    <thead>
+                                    <tr>
+                                        <th style="width: 45px;">Task</th>
+                                        <th style="width: 20px;">Created Date</th>
+                                        <th style="width: 20px;">Due Date</th>
+                                        <th style="width: 15px;">Status</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                        <%# @admin_tasks.each do |admin_task| %>
+                                            <tr>
+                                                <td data-label="task">
+                                                    <p><%#= admin_task.title %></p>
+                                                </td>
+                                                <td data-label="CreatedDate"><p><%#= admin_task.start_date %></p>
+                                                </td>
+                                                <td data-label="DueDate"><p><%#= admin_task.due_date %></p></td>
+                                                </td>
+                                                <td data-label="DueDate"><p><%#= admin_task.status %></p></td>
+                                                </td>
+                                            </tr>
+                                        <%# end %>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="panel">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Recent Support Tickets</h3>
+                            </div>
+                            <div class="panel-body p-none">
+                                <table class="table table-hover table-ultra-responsive">
+                                    <thead>
+                                            <tr>
+                                                <th style="width: 30px;">Email</th>
+                                                <th style="width: 50px;">Subject</th>
+                                                <th style="width: 20px;">Date</th>
+                                            </tr>
+                                    </thead>
+                                    <tbody>
+                                        <%# @admin_tickets.each do |admin_ticket| %>
+                                        <tr>
+                                        <td>employee@coderpixel.com</td>
+                                        <td><%#= admin_ticket.subject %></td>
+                                        <td><%#= admin_ticket.created_at %></td>
+                                    </tr>
+                                        <%# end %>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
