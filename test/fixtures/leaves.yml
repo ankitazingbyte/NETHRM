@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  employee_id: 1
+  leave_type: MyString
+  leave_from: MyString
+  leave_to: MyString
+  status: MyString
+  reason: MyString
+
+two:
+  employee_id: 1
+  leave_type: MyString
+  leave_from: MyString
+  leave_to: MyString
+  status: MyString
+  reason: MyString

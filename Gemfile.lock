@@ -231,7 +231,7 @@ DEPENDENCIES
   byebug
   capybara (~> 2.13)
   carmen-rails
-  carrierwave (~> 1.0)
+  carrierwave
   ckeditor
   coffee-rails (~> 4.2)
   devise

@@ -1,0 +1,164 @@
+<section class="wrapper-bottom-sec">
+    <div class="p-30">
+        <h2 class="page-title">View Profile</h2>
+    </div>
+    <div class="p-30 p-t-none p-b-none">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel">
+                    <div class="panel-body p-t-20">
+                        <div class="clearfix">
+                            <div class="pull-left m-r-30">
+                                <div class="thumbnail m-b-none">
+                                    <%= image_tag @employee.image.url, width: "200px", height: "200px"%>
+                                </div>
+                            </div>
+                            <div class="pull-left">
+                                <h3 class="bold font-color-1"><%= @employee.first_name %></h3>
+                                <ul class="info-list">
+                                    <li><span class="info-list-title">Email</span><span class="info-list-des">h1student@deneme.com</span></li>
+                                    <li><span class="info-list-title"><%= @employee.user_name %></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="p-30 p-t-none p-b-none">
+        <div class="row">
+            <div class="col-lg-12">
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><a href="#personal_details" aria-controls="home" role="tab" data-toggle="tab">Personal Details</a></li>
+                    <li role="presentation"><a href="#bank_information" aria-controls="profile" role="tab" data-toggle="tab">Bank Info</a></li>
+                    <li role="presentation"><a href="#document" aria-controls="messages" role="tab" data-toggle="tab">Document</a></li>
+                    <!-- <li role="presentation"><a href="#change-picture" aria-controls="settings" role="tab" data-toggle="tab">Change Picture</a></li> -->
+                </ul>
+                <!-- Tab panes -->
+                <div class="tab-content panel p-20">
+                    <div role="tabpanel" class="tab-pane active" id="personal_details">
+                       <%=  render "form", employee: @employee %>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="bank_information">
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <div class="panel">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title"> Add Bank Account</h3>
+                                    </div>
+                                    <div class="panel-body">
+                                        <%#=  render "admin/banks/new", bank: @bank %>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-9">
+                                <div class="panel">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title">All Bank Accounts</h3>
+                                    </div>
+                                    <div class="panel-body p-none">
+                                        <table class="table data-table table-hover table-ultra-responsive">
+                                            <thead>
+                                            <tr>
+                                                <th style="width: 10%;">Bank Name</th>
+                                                <th style="width: 10%;">Branch</th>
+                                                <th style="width: 10%;">Account Name</th>
+                                                <th style="width: 10%;">Account No</th>
+                                                <th style="width: 10%;">IFSC Code</th>
+                                                <th style="width: 10%;">PAN No</th>
+                                                <th style="width: 5%;" class="text-right"></th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                                <%# @banks.each do |bank| %>
+                                                    <tr>
+                                                        <td data-label="Bank Name"><p><%#= bank.name %></p></td>
+                                                        <td data-label="Branch Name"><p><%#= bank.branch_name %></p></td>
+                                                        <td data-label="Account Name"><p><%#= bank.account_name %></p></td>
+                                                        <td data-label="Account No"><p><%#= bank.account_number %></p></td>
+                                                        <td data-label="IFSC Code"><p><%#= bank.ifsc_code %></p></td>
+                                                        <td data-label="PAN No"><p><%#= bank.pan_number %></p></td>
+                                                        <td class="text-right">
+                                                           <%#= link_to bank, class: "btn btn-danger btn-xs deleteBankAccount", method: :delete, data: { confirm: 'Are you sure?' } do %><i class="fa fa-trash"></i><%# end %>
+                                                        </td>
+                                                    </tr>
+                                                <%# end %>
+                                        	</tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div role="tabpanel" class="tab-pane" id="document">
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <div class="panel">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title"> Add Document</h3>
+                                    </div>
+                                    <div class="panel-body">
+                                        <%#=  render "admin/documents/new", admin_document: @admin_document %>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-9">
+                                <div class="panel">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title">All Documents</h3>
+                                    </div>
+                                    <div class="panel-body p-none">
+                                        <table class="table data-table table-hover table-ultra-responsive">
+                                            <thead>
+                                            <tr>
+                                                <th style="width: 65%;">Document Name</th>
+                                                <th style="width: 35%;" class="text-right">Actions</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                                <%# @admin_documents.each do |admin_document| %>
+                                                    <tr>
+                                                        <td data-label="Document Name"><%#= admin_document.name %></td>
+                                                        <td class="text-right">
+                                                            <%#= link_to admin_document.attachment_url,class: "btn btn-success btn-xs" do %><i class="fa fa-download"></i> Download<%# end %>
+                                                           <%#= link_to admin_document,class: "btn btn-danger btn-xs", method: :delete, data: { confirm: 'Are you sure?' } do %><i class="fa fa-trash"></i> Delete<%# end %>
+                                                        </td>
+                                                    </tr>
+                                                <%# end %>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- <div role="tabpanel" class="tab-pane" id="change-picture">
+                        <form role="form" action="http://coderpixel.com/demo/advanced-hrm/employees/update-employee-avatar" method="post" enctype="multipart/form-data">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group input-group input-group-file">
+                                            <span class="input-group-btn">
+                                                <span class="btn btn-primary btn-file">
+                                                    Browse <input type="file" class="form-control" name="image">
+                                                </span>
+                                            </span>
+                                        <input type="text" class="form-control" readonly="">
+                                    </div>
+                                    <input type="hidden" name="_token" value="pBMHGiNmnECsLu725vngfmhFjQNCd6pE83DHcDO4">
+                                    <input type="hidden" value="28" name="cmd">
+                                    <input type="submit" value="Update" class="btn btn-primary">
+                                </div>
+                            </div>
+                        </form>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @award.name %>
+</p>
+
+<p>
+  <strong>Employee:</strong>
+  <%= @award.employee_id %>
+</p>
+
+<p>
+  <strong>Gift item:</strong>
+  <%= @award.gift_item %>
+</p>
+
+<p>
+  <strong>Cash price:</strong>
+  <%= @award.cash_price %>
+</p>
+
+<p>
+  <strong>Month:</strong>
+  <%= @award.month %>
+</p>
+
+<p>
+  <strong>Year:</strong>
+  <%= @award.year %>
+</p>
+
+<%= link_to 'Edit', edit_admin_award_path(@award) %> |
+<%= link_to 'Back', admin_awards_path %>

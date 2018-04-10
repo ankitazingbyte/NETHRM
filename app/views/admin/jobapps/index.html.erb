@@ -1,0 +1,60 @@
+<section class="wrapper-bottom-sec">
+    <div class="p-30">
+        <h2 class="page-title">Job Applications</h2>
+    </div>
+    <div class="p-30 p-t-none p-b-none">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Job Applications</h3>
+                        <!-- Trigger the modal with a button -->
+                        <button class="btn btn-success btn-sm pull-right" data-toggle="modal" data-target="#add-new-job"><i class="fa fa-plus"></i> Add New Job </button>
+                        <br>
+                    </div>
+                    <div class="panel-body p-none">
+                        <table class="table data-table table-hover table-ultra-responsive">
+                            <thead>
+                            <tr>
+                                <th style="width: 5%;">SL#</th>
+                                <th style="width: 15%;">Position</th>
+                                <th style="width: 15%;">Posted Date</th>
+                                <th style="width: 15%;">Apply Last Date</th>
+                                <th style="width: 15%;">Close Date</th>
+                                <th style="width: 5%;">Status</th>
+                                <th style="width: 30%;">Actions</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                <% @jobapps.each do |jobapp| %>
+                                  <tr>
+                                    <td><%= jobapp.id %></td>
+                                    <td><%= Designation.where(id: jobapp.designation_id)[0].name if jobapp.designation_id %></td>
+                                    <td><%= jobapp.post_date %></td>
+                                    <td><%= jobapp.last_date_to_apply %></td>
+                                    <td><%= jobapp.close_date %></td>
+                                    <td class= "btn btn-primary btn-xs" ><%= jobapp.status %></td>
+                                    <td><%= link_to 'Edit', edit_admin_jobapp_path(jobapp), class: "btn btn-success" %>
+                                        <%#= link_to 'Destroy', jobapp_path, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
+                                  </tr>
+                                <% end %>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="add-new-job" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Add New Job</h4>
+                    </div>
+                    <%= render "admin/jobapps/new" %>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Admin employee:</strong>
+  <%= @increament.employee_id %>
+</p>
+
+<p>
+  <strong>Admin designation:</strong>
+  <%= @increament.designation_id %>
+</p>
+
+<p>
+  <strong>Current salary:</strong>
+  <%= @increament.current_salary %>
+</p>
+
+<p>
+  <strong>Increment salary:</strong>
+  <%= @increament.increament_salary %>
+</p>
+
+<%= link_to 'Edit', edit_admin_increament_path(@increament) %> |
+<%= link_to 'Back', admin_increaments_path %>

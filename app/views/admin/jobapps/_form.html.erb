@@ -1,0 +1,86 @@
+<%= form_for @jobapp, :url => admin_jobapp_path(@jobapp) do |form| %>
+
+    <% if @jobapp.errors.any? %>
+        <div id="error_explanation">
+          <h2>
+            <%= pluralize(@jobapp.errors.count, "error") %> prohibited
+            this jobapp from being saved:
+          </h2>
+          <ul>
+            <% @jobapp.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %> 
+      
+    <div class="form-group">
+        <label>Position</label>
+        <%= form.select :designation_id, Designation.all.map{|d| [d.name, d.id]}, class: "form-control selectpicker" %>
+    </div>
+
+    <div class="form-group">
+        <label>Number Of Post</label>
+        <span class="help">e.g. "2"</span>
+        <%= form.text_field :number_of_post, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+        <label>Job Type</label>
+        <%= form.select :job_type, %w{fulltime parttime}, :prompt => 'Select', required: true, placeholder: 'Job Type', class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+        <label>Experience</label>
+        <%= form.text_field :experience, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+        <label>Age</label>
+        <%= form.text_field :age, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+        <label>Job Location</label>
+        <%= form.text_field :job_location, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+        <label>Salary Range</label>
+        <%= form.text_field :salary, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+        <label>Post Date</label>
+        <%= form.text_field :post_date, class: "form-control", "data-provide" => 'datepicker'  %>
+    </div>
+
+    <div class="form-group">
+        <label>Last Date To Apply</label>
+        <%= form.text_field :last_date_to_apply, class: "form-control", "data-provide" => 'datepicker'  %>
+    </div>
+
+    <div class="form-group">
+        <label>Close Date</label>
+        <%= form.text_field :close_date, class: "form-control", "data-provide" => 'datepicker'  %>
+    </div>
+
+    <div class="form-group m-none">
+        <label>Status</label>
+        <%= form.select :status, %w{Open Close Drafted}, :prompt => 'Select', required: true, placeholder: 'Job Type', class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+        <label>Short Description</label>
+        <%= form.text_area :short_description, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+        <label>Description</label>
+        <%= form.cktext_area :description, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+        <%= form.submit "Update", class: "btn btn-primary" %>
+    </div>
+<% end %>

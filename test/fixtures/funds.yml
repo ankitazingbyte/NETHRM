@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  employee_id: 1
+  fund_type: MyString
+  employee_share: MyString
+  organization_share: MyString
+  description: MyString
+  status: MyString
+
+two:
+  employee_id: 1
+  fund_type: MyString
+  employee_share: MyString
+  organization_share: MyString
+  description: MyString
+  status: MyString

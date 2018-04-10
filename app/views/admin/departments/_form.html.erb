@@ -1,4 +1,4 @@
-<%= form_for Department.new do |form| %>
+<%= form_for @department, :url => admin_departments_path do |form| %>
   <% if @department.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@department.errors.count, "error") %> prohibited this department from being saved:</h2>

@@ -1,0 +1,2 @@
+class Salslip < ApplicationRecord
+end

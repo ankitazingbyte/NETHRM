@@ -1,0 +1,2 @@
+class Increament < ApplicationRecord
+end
