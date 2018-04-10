@@ -1,0 +1,10 @@
+<%= form_for @department,:url => admin_departments_path do |form| %>
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, class: "form-control"  %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "submit", class: "btn btn-success btn-sm pull-right" %>
+  </div>
+<% end %>

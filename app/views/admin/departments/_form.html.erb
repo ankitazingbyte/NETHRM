@@ -1,22 +1,19 @@
-<%= form_for Department.new do |form| %>
-  <% if @department.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@department.errors.count, "error") %> prohibited this department from being saved:</h2>
-
-      <ul>
-      <% @department.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal">×</button>
+      <h3 class="modal-title">Edit Department</h3>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, id: :department_name %>
+    <%= form_for @department,:url => new_admin_department_path, remote: true do |form| %>      
+      <div class="modal-body form-group form-admin">
+        <ul class="errors alert-danger"></ul>
+        <div class="field">
+          <%= form.label :name %>
+          <%= form.text_field :name, class: "form-control"  %>
+        </div>
+          <%= form.submit "Update", class: "btn btn-success btn-sm pull-right" %>
+          <%= link_to "Cancel", "#", class: "btn", data: { dismiss: "modal" } %>
+      </div>
+    <% end %>
   </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

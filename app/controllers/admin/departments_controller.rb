@@ -5,6 +5,7 @@ class Admin::DepartmentsController < ApplicationController
   # GET /departments.json
   def index
     @departments = Department.all
+    @department = Department.new
   end
 
   # GET /departments/1
@@ -26,39 +27,28 @@ class Admin::DepartmentsController < ApplicationController
   def create
     @department = Department.new(department_params)
 
-    respond_to do |format|
       if @department.save
-        format.html { redirect_to @department, notice: 'Department was successfully created.' }
-        format.json { render :show, status: :created, location: @department }
+         redirect_to action: "index", notice: 'Department was successfully created.'
       else
-        format.html { render :new }
-        format.json { render json: @department.errors, status: :unprocessable_entity }
+        render :new
       end
-    end
   end
 
   # PATCH/PUT /departments/1
   # PATCH/PUT /departments/1.json
   def update
-    respond_to do |format|
       if @department.update(department_params)
-        format.html { redirect_to @department, notice: 'Department was successfully updated.' }
-        format.json { render :show, status: :ok, location: @department }
+        redirect_to action: "index", notice: 'Department was successfully updated.' 
       else
-        format.html { render :edit }
-        format.json { render json: @department.errors, status: :unprocessable_entity }
+        render :edit 
       end
-    end
   end
 
   # DELETE /departments/1
   # DELETE /departments/1.json
   def destroy
     @department.destroy
-    respond_to do |format|
-      format.html { redirect_to departments_url, notice: 'Department was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+      redirect_to departments_url, notice: 'Department was successfully destroyed.' 
   end
 
   private
