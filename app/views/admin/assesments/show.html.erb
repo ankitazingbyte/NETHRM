@@ -1,0 +1,79 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Admin department:</strong>
+  <%= @assesment.department_id %>
+</p>
+
+<p>
+  <strong>Training type:</strong>
+  <%= @assesment.training_type %>
+</p>
+
+<p>
+  <strong>Training subject:</strong>
+  <%= @assesment.training_subject %>
+</p>
+
+<p>
+  <strong>Nature of training:</strong>
+  <%= @assesment.nature_of_training %>
+</p>
+
+<p>
+  <strong>Training title:</strong>
+  <%= @assesment.training_title %>
+</p>
+
+<p>
+  <strong>Admin employee:</strong>
+  <%= @assesment.admin_employee_id %>
+</p>
+
+<p>
+  <strong>Training reason:</strong>
+  <%= @assesment.training_reason %>
+</p>
+
+<p>
+  <strong>Admin trainer:</strong>
+  <%= @assesment.admin_trainer_id %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @assesment.location %>
+</p>
+
+<p>
+  <strong>Start date:</strong>
+  <%= @assesment.start_date %>
+</p>
+
+<p>
+  <strong>End date:</strong>
+  <%= @assesment.end_date %>
+</p>
+
+<p>
+  <strong>Training cost:</strong>
+  <%= @assesment.training_cost %>
+</p>
+
+<p>
+  <strong>Travel cost:</strong>
+  <%= @assesment.travel_cost %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @assessment.status %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @assesment.description %>
+</p>
+
+<%= link_to 'Edit', edit_admin_assesment_path(@assesment) %> |
+<%= link_to 'Back', admin_assesments_path %>

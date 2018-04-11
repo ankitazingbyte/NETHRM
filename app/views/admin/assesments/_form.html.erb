@@ -1,0 +1,91 @@
+<%= form_for @assesment, :url => admin_assesments_path, remote: true do |form| %>
+<% if @assessment.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@assesment.errors.count, "error") %> prohibited
+      this assessment from being saved:</h2>
+    <ul>
+    <% @assesment.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
+    <div class="form-group">
+      <label>Department</label>
+      <%= form.select :department_id, Department.all.map{|d| [d.name, d.id]}, class: "btn dropdown-toggle btn-default" %>
+    </div>
+
+    <div class="form-group">
+      <label>Training Type</label>
+      <%= form.select :training_type, %w{Online Seminar Workshop}, :prompt => 'Select', required: true, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <label>Training Subject</label>
+      <%= form.select :training_subject, %w{Employee-Development IT-Training Finance-Training}, :prompt => 'Select', required: true, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+        <label>Nature Of Training</label>
+        <%= form.select :nature_of_training, %w{Internal External}, :prompt => 'Select', required: true, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+        <label>Training Title</label>
+        <%= form.text_field :training_title, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+        <label>Training Employee</label>
+        <%= form.select :employee_id, Employee.all.map{|d| [d.first_name, d.id]}, class: "btn dropdown-toggle btn-default" %>
+    </div>
+
+    <div class="form-group">
+        <label>Training Reason</label>
+        <%= form.cktext_area :training_reason, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+        <label>Preferred Trainer</label>
+        <%= form.select :trainer_id, Trainer.all.map{|e| [e.first_name, e.id]}, class: "btn dropdown-toggle btn-default" %>
+    </div>
+
+    <div class="form-group">
+        <label>Preferred  Training Location</label>
+        <%= form.text_field :location, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+        <label>Preferred  Start Date</label>
+        <%= form.text_field :start_date, class: "form-control", "data-provide" => 'datepicker' %>
+    </div>
+
+    <div class="form-group">
+        <label>Preferred End Date</label>
+        <%= form.text_field :end_date, class: "form-control", "data-provide" => 'datepicker' %>
+    </div>
+
+    <div class="form-group">
+        <label>Preferred  Training Cost</label>
+        <%= form.text_field :training_cost, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+        <label>Preferred  Travel Cost</label>
+        <%= form.text_field :travel_cost, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+        <label>Status</label>
+        <%= form.select :status, %w{Pending Aproved Rejected Completed}, :prompt => 'Select', required: true, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+        <label>Training Description</label>
+        <%= form.cktext_area :description, class: "form-control" %>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <%= form.submit "update", class: "btn btn-primary" %>
+  </div>
+<% end %>

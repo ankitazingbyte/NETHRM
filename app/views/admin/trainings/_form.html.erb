@@ -1,0 +1,76 @@
+<%= form_for @training, :url => admin_trainings_path, do |form| %>
+  <% if training.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(training.errors.count, "error") %> prohibited this training from being saved:</h2>
+      <ul>
+      <% training.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <label>Employee</label>
+    <%= form.select :employee_id, Employee.all.map{|e| [e.first_name, e.id]}, class: "btn dropdown-toggle btn-default" %>
+  </div>
+
+  <div class="field">
+    <label>Training Type</label>
+    <%= form.select :training_type, %w{Online Seminar Workshop}, :prompt => 'Select', required: true, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <label>Training Subject</label>
+    <%= form.select :training_subject, %w{Employee-Development IT-Training Finance-Training}, :prompt => 'Select', required: true, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <label>Nature Of Training</label>
+    <%= form.select :nature, %w{Internal External}, :prompt => 'Select', required: true, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <label>Training Title</label>
+    <%= form.text_field :title, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <label>Trainer</label>
+    <%= form.select :trainer_id, Trainer.all.map{|e| [e.first_name, e.id]}, class: "btn dropdown-toggle btn-default" %>
+  </div><br>
+
+  <div class="field">
+    <label>Training Location</label>
+    <%= form.text_field :location, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <label>Sponsored By</label>
+    <%= form.text_field :sponsored_by, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <label>Organized By</label>
+    <%= form.text_field :organized_by, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <label>Training From</label>
+    <%= form.text_field :training_from, class: "form-control", "data-provide" => 'datepicker' %>
+  </div>
+
+  <div class="field">
+    <label>Training To</label>
+    <%= form.text_field :training_to, class: "form-control", "data-provide" => 'datepicker' %>
+  </div>
+
+  <div class="field">
+      <label>Training Description</label>
+      <%= form.cktext_area :description, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.submit "update", class: "btn btn-primary" %>
+  </div>
+<% end %>

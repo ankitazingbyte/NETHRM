@@ -1,0 +1,112 @@
+<section class="wrapper-bottom-sec">
+    <div class="p-30">
+        <h2 class="page-title">Manage Task</h2>
+    </div>
+    <div class="p-30 p-t-none p-b-none">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="panel">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Task Basic Info</h3>
+                    </div>
+                    <div class="panel-body">
+                        <%= render 'form', admin_task: @admin_task %>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <div class="panel">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Task Management</h3>
+                    </div>
+
+                    <div class="p-30 p-t-none p-b-none">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <!-- Nav tabs -->
+                                <ul class="nav nav-tabs" role="tablist">
+                                    <li role="presentation" class="active"><a href="#task_details" aria-controls="home" role="tab" data-toggle="tab">Task Details</a></li>
+                                    <li role="presentation"><a href="#task_discussion" aria-controls="profile" role="tab" data-toggle="tab">Task Discussion</a></li>
+                                    <li role="presentation"><a href="#task_files" aria-controls="messages" role="tab" data-toggle="tab">Task Files</a></li>
+                                </ul>
+
+                                <!-- Tab panes -->
+                                <div class="tab-content p-20">
+                                    <div role="tabpanel" class="tab-pane active" id="task_details">
+                                        <div class="form-group">
+                                            <label>Task Title</label>
+                                            <p> <%= @admin_task.title %> </p>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Task Description</label>
+                                            <p><p><%= @admin_task.description.html_safe %><br></p></p>
+                                        </div>
+
+                                        <h3>Task Members:</h3>
+                                        <hr>
+                                           <%= Admin::Employee.where(id: @admin_task.admin_employee_id)[0].first_name if @admin_task.admin_employee_id %><br>
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane" id="task_discussion">
+                                        <%= render 'admin/task_discussions/form'%>
+                                        <br>
+                                        <hr>
+                                        <table class="table table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th style="width: 25%;">Member</th>
+                                                    <th style="width: 55%;">Comment</th>
+                                                    <th style="width: 20%;">Last Update</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <% @admin_task_discussions.each do |admin_task_discussion| %>
+                                                    <tr>
+                                                        <td data-label="Member"><p>Coder</p></td>
+                                                        <td data-label="Comment"><p><%= admin_task_discussion.comment %></p></td>
+                                                        <td data-label="Last Update"><p><%= admin_task_discussion.created_at %></p></td>
+                                                    </tr>
+                                                <% end %>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane" id="task_files">
+                                        <%= render 'admin/task_files/form'%>
+                                        <br>
+                                        <hr>
+                                        <table class="table table-hover">
+                                            <thead>
+                                            <tr>
+                                                <th style="width: 20%;">Files</th>
+                                                <th style="width: 20%;">Size</th>
+                                                <th style="width: 20%;">Date</th>
+                                                <th style="width: 20%;">Upload By</th>
+                                                <th style="width: 20%;">Actions</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                                <% @admin_task_files.each do |admin_task_file| %>
+                                                    <tr>
+                                                     <td data-label="Files"><p><%= admin_task_file.title %></p></td>
+                                                        <td data-label="Size"><p>135.72 KB</p></td>
+                                                        <td data-label="Size"><p><%= admin_task_file.created_at %></p></td>
+                                                        <td data-label="Member"><p>Coder</p></td>
+                                                        <td data-label="actions">
+                                                            <%= link_to admin_task_file.attachment_url do %><i class="fa fa-download"></i> <% end %>
+                                                            <%= link_to admin_task_file, class: "btn btn-danger btn-xs", method: :delete, data: { confirm: 'Are you sure?' } do %><i class="fa fa-trash"></i><% end %>
+                                                        </td>
+                                                    </tr>
+                                                <% end %>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

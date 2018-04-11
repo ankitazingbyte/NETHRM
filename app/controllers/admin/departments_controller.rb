@@ -27,47 +27,28 @@ class Admin::DepartmentsController < ApplicationController
   def create
     @department = Department.new(department_params)
 
-<<<<<<< HEAD
     if @department.save
       flash[:success] = "Department successfully created"
       redirect_to action: "index", alert: @department.errors.full_messages
     else
       render :new 
     end
-=======
-      if @department.save
-         redirect_to action: "index", notice: 'Department was successfully created.'
-      else
-        render :new
-      end
->>>>>>> 68f4d19c3dfcfd10a5f5b068d94e9e072a19dfdb
   end
 
   def update
-<<<<<<< HEAD
     if @department.update(department_params)
       flash[:success] = "Department successfully updated"
       redirect_to action: "index", alert: @department.errors.full_messages
     else
       render :edit
     end
-=======
-      if @department.update(department_params)
-        redirect_to action: "index", notice: 'Department was successfully updated.' 
-      else
-        render :edit 
-      end
->>>>>>> 68f4d19c3dfcfd10a5f5b068d94e9e072a19dfdb
   end
 
   def destroy
     @department.destroy
-<<<<<<< HEAD
     flash[:success] = "Department successfully deleted"
     redirect_to departments_url
-=======
-      redirect_to departments_url, notice: 'Department was successfully destroyed.' 
->>>>>>> 68f4d19c3dfcfd10a5f5b068d94e9e072a19dfdb
+
   end
 
   private

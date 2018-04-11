@@ -1,0 +1,47 @@
+<%= form_for @task, :url => admin_tasks_path do |form| %>
+
+  <div class="modal-body">
+      <div class="form-group">
+          <label>Task Title</label>
+          <%= form.text_field :title, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+          <label>Assign To</label>
+          <%= form.select :employee_id, Employee.all.map{|e| [e.user_name, e.id]}, class: "btn dropdown-toggle btn-default" %>
+      </div>
+
+      <div class="form-group">
+          <label>Start Date</label>
+          <%= form.text_field :start_date, class: "form-control", "data-provide" => 'datepicker' %>
+      </div>
+
+      <div class="form-group">
+          <label>Due Date</label>
+          <%= form.text_field :due_date, class: "form-control", "data-provide" => 'datepicker' %>
+      </div>
+
+      <div class="form-group">
+          <label>Estimated Hour</label>
+          <%= form.text_field :estimated_hour, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+          <label>Progress</label>
+          <%= form.text_field :progress, class: "form-control" %>
+      </div>
+
+      <div class="form-group m-none">
+          <label for="e20">Status</label>
+          <%= form.select :status, %w{Pending Started Complete}, :prompt => 'Select', required: true, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+          <label>Description</label>
+          <%= form.cktext_area :description, class: "form-control" %>
+      </div>
+  </div>
+  <div class="modal-footer">
+      <%= form.submit "Update", class: "btn btn-primary" %>
+  </div>
+<% end %>

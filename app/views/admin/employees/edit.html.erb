@@ -10,7 +10,7 @@
                         <div class="clearfix">
                             <div class="pull-left m-r-30">
                                 <div class="thumbnail m-b-none">
-                                    <%= image_tag @employee.image.url, width: "200px", height: "200px"%>
+                                    <%= image_tag @employee.image.url, width: "200px", height: "200px"  unless @employee.image.blank?%>
                                 </div>
                             </div>
                             <div class="pull-left">
@@ -49,7 +49,7 @@
                                         <h3 class="panel-title"> Add Bank Account</h3>
                                     </div>
                                     <div class="panel-body">
-                                        <%#=  render "admin/banks/new", bank: @bank %>
+                                        <%=  render "admin/banks/new", bank: @bank %>
                                     </div>
                                 </div>
                             </div>
@@ -73,19 +73,19 @@
                                             </tr>
                                             </thead>
                                             <tbody>
-                                                <%# @banks.each do |bank| %>
+                                                <% @banks.each do |bank| %>
                                                     <tr>
-                                                        <td data-label="Bank Name"><p><%#= bank.name %></p></td>
-                                                        <td data-label="Branch Name"><p><%#= bank.branch_name %></p></td>
-                                                        <td data-label="Account Name"><p><%#= bank.account_name %></p></td>
-                                                        <td data-label="Account No"><p><%#= bank.account_number %></p></td>
-                                                        <td data-label="IFSC Code"><p><%#= bank.ifsc_code %></p></td>
-                                                        <td data-label="PAN No"><p><%#= bank.pan_number %></p></td>
+                                                        <td data-label="Bank Name"><p><%= bank.name %></p></td>
+                                                        <td data-label="Branch Name"><p><%= bank.branch_name %></p></td>
+                                                        <td data-label="Account Name"><p><%= bank.account_name %></p></td>
+                                                        <td data-label="Account No"><p><%= bank.account_number %></p></td>
+                                                        <td data-label="IFSC Code"><p><%= bank.ifsc_code %></p></td>
+                                                        <td data-label="PAN No"><p><%= bank.pan_number %></p></td>
                                                         <td class="text-right">
                                                            <%#= link_to bank, class: "btn btn-danger btn-xs deleteBankAccount", method: :delete, data: { confirm: 'Are you sure?' } do %><i class="fa fa-trash"></i><%# end %>
                                                         </td>
                                                     </tr>
-                                                <%# end %>
+                                                <% end %>
                                         	</tbody>
                                         </table>
                                     </div>
@@ -102,7 +102,7 @@
                                         <h3 class="panel-title"> Add Document</h3>
                                     </div>
                                     <div class="panel-body">
-                                        <%#=  render "admin/documents/new", admin_document: @admin_document %>
+                                        <%=  render "admin/documents/new", document: @document %>
                                     </div>
                                 </div>
                             </div>
@@ -121,15 +121,15 @@
                                             </tr>
                                             </thead>
                                             <tbody>
-                                                <%# @admin_documents.each do |admin_document| %>
+                                                <% @documents.each do |document| %>
                                                     <tr>
-                                                        <td data-label="Document Name"><%#= admin_document.name %></td>
+                                                        <td data-label="Document Name"><%= document.name %></td>
                                                         <td class="text-right">
-                                                            <%#= link_to admin_document.attachment_url,class: "btn btn-success btn-xs" do %><i class="fa fa-download"></i> Download<%# end %>
+                                                            <%= link_to document.attachment_url,class: "btn btn-success btn-xs" do %><i class="fa fa-download"></i> Download<% end %>
                                                            <%#= link_to admin_document,class: "btn btn-danger btn-xs", method: :delete, data: { confirm: 'Are you sure?' } do %><i class="fa fa-trash"></i> Delete<%# end %>
                                                         </td>
                                                     </tr>
-                                                <%# end %>
+                                                <% end %>
                                             </tbody>
                                         </table>
                                     </div>

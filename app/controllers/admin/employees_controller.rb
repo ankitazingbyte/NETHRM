@@ -20,6 +20,10 @@ class Admin::EmployeesController < ApplicationController
 
   # GET /employees/1/edit
   def edit
+    @banks = Bank.all
+    @bank = Bank.new
+    @documents = Document.all
+    @document = Document.new
   end
 
   # POST /employees

@@ -1,0 +1,77 @@
+<%= form_for @training_event, :url => admin_training_events_path, do |form| %>
+  <% if training_event.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(training_event.errors.count, "error") %> prohibited this training_event from being saved:</h2>
+
+      <ul>
+      <% training_event.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :training_type %>
+    <%= form.select :training_type, %w{Online Seminar Workshop}, :prompt => 'Select', required: true, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :subject %>
+    <%= form.select :subject, %w{Employee-Development IT-Training Finance-Training}, :prompt => 'Select', required: true, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :nature_of_training %>
+    <%= form.select :nature_of_training, %w{Internal External}, :prompt => 'Select', required: true, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :location %>
+    <%= form.text_field :location, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :sponsored_by %>
+    <%= form.text_field :sponsored_by, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :organized_by %>
+    <%= form.text_field :organized_by, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :training_from %>
+    <%= form.text_field :training_from, class: "form-control", "data-provide" => 'datepicker' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :training_to %>
+    <%= form.text_field :training_to, class: "form-control", "data-provide" => 'datepicker' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :admin_employee_id %>
+     <%= form.select :admin_employee_id, Admin::Employee.all.map{|e| [e.first_name, e.id]}, class: "btn dropdown-toggle btn-default" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :admin_trainer_id %>
+     <%= form.select :admin_trainer_id, Admin::Trainer.all.map{|e| [e.first_name, e.id]}, class: "btn dropdown-toggle btn-default" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :status %>
+    <%= form.select :status, %w{completed Upcoming}, :prompt => 'Select', required: true, class: 'form-control' %>
+  </div><br>
+
+  <div class="field">
+    <%= form.submit "Update", class: "btn btn-primary"%>
+  </div>
+<% end %>

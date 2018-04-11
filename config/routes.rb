@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-<<<<<<< HEAD
 	root "admin/home#index"
   	devise_for :users
   	# For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
@@ -16,12 +15,14 @@ Rails.application.routes.draw do
 	 	resources :funds
 	 	resources :loans
 	 	resources :employees
-=======
-devise_for :users
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-	namespace :admin do
-	 	resources :departments
->>>>>>> 68f4d19c3dfcfd10a5f5b068d94e9e072a19dfdb
+	 	resources :documents
+  		resources :banks
+  		resources :trainings
+  		resources :trainers
+  		resources :assesments
+  		resources :training_events
+  		resources :evaluations
+  		resources :tasks
 	 	get "home/index"
 	 	root "home#index"
 	end

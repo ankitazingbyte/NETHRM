@@ -5,50 +5,6 @@
     <div class="p-30 p-t-none p-b-none">
         <div class="row">
             <div class="col-lg-4">
-                <div class="panel">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Add Department</h3>
-                    </div>
-                    <div class="panel-body">
-                        <div class="form-group">
-                            <label>Department Name</label>
-                            <span class="help">e.g. "Account Department"</span>
-                            <%= render "admin/departments/new" %>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-8">
-                <div class="panel">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">All Departments</h3>
-                    </div>
-                    <div class="panel-body p-none">
-                        <table class="table data-table table-hover table-ultra-responsive">
-                            <thead>
-                                <tr>
-                                    <th style="width: 10%;">SL#</th>
-                                    <th style="width: 55%;">Department Name</th>
-                                    <th style="width: 35%;">Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <% @departments.each do |department| %>
-                                    <tr>
-                                        <td><%= department.id %></td>
-                                        <td><%= department.name %></td>
-                                        <td>
-                                            <%= link_to 'Edit', edit_admin_department_path(department), class: "btn btn-success btn-xs bottom", remote: true %>
-                                              <!-- <button type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#myModal">Edit</button> -->
-
-<<<<<<< HEAD
-<section class="wrapper-bottom-sec">
-    <div class="p-30">
-        <h2 class="page-title">Department</h2>
-    </div>
-    <div class="p-30 p-t-none p-b-none">
-        <div class="row">
-            <div class="col-lg-4">
                 <div class="panel panel-info">
                     <div class="panel-heading">
                         <h3 class="panel-title">Add Department</h3>
@@ -100,25 +56,6 @@
     <div id="status-modal" tabindex="-1" role="dialog" class="modal fade"></div>
     <script type="text/javascript">
     $(document).ready(function () {
-
-=======
-                                            <%#= link_to 'Destroy', department, method: :delete, data: { confirm: 'Are you sure?' },class: "btn btn-danger btn-xs" %>
-                                        </td>
-                                    </tr>
-                                <% end %>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- EDIT MODAL  -->
-    <div id="status-modal" tabindex="-1" role="dialog" class="modal fade"></div>
-    <script type="text/javascript">
-    $(document).ready(function () {
-
->>>>>>> 68f4d19c3dfcfd10a5f5b068d94e9e072a19dfdb
       $('.bottom').click(function() {
         $('#status-modal').modal("show");
       });

@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<section class="wrapper-bottom-sec">
+  <div class="p-30">
+      <h2 class="page-title">Trainers</h2>
+  </div>
+  <div class="p-30 p-t-none p-b-none">
+    <div class="row">
+      <div class="col-lg-12">
+          <div class="panel">
+              <div class="panel-heading">
+                  <h3 class="panel-title">Trainers</h3>
+                  <button class="btn btn-success btn-sm pull-right" data-toggle="modal" data-target="#add-new-trainer"><i class="fa fa-plus"></i> Add New Trainer</button>
+                  <br>
+              </div>
+              <div class="panel-body p-none">
+                  <table class="table data-table table-hover table-ultra-responsive">
+                      <thead>
+                      <tr>
+                          <th style="width: 25%;">Name</th>
+                          <th style="width: 20%;">Email</th>
+                          <th style="width: 15%;">Designation</th>
+                          <th style="width: 15%;">Organization</th>
+                          <th style="width: 25%;" class="text-right">Actions</th>
+                      </tr>
+                      </thead>
+                      <tbody>
+                        <% @trainers.each do |trainer| %>
+                          <tr>
+                              <td data-label="Name"><p><%= trainer.first_name %><%= trainer.lastname %></p></td>
+                              <td data-label="Email"><p><%= trainer.email %></p></td>
+                              <td data-label="Designation"><p><%= trainer.designation %></p></td>
+                              <td data-label="Organization"><p><%= trainer.organization %></p></td>
+                              <td data-label="Actions" class="text-right">
+                                  <%= link_to edit_admin_trainer_path(trainer), class: "btn btn-success btn-xs" do %><i class="fa fa-edit"></i>Edit<% end %>
+                                  <%#= link_to trainer,class: "btn btn-danger btn-xs", method: :delete, data: { confirm: 'Are you sure?' } do %><i class="fa fa-trash"></i> Delete<%# end %>
+                              </td>
+                          </tr>
+                        <% end %>
+                      </tbody>
+                  </table>
+              </div>
+          </div>
+      </div>
+    </div>
+      <!-- Modal -->
+    <div class="modal fade" id="add-new-trainer" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Add New Trainer</h4>
+                </div>
+                <%= render "admin/trainers/new" %>
+            </div>
+        </div>
+    </div>
+  </div>
+</section>

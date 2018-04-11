@@ -10,4 +10,8 @@ class User < ApplicationRecord
 		return self.has_role? :admin
 	end
 	has_one :employee
+  after_create :create_employee
+  def build_employee
+    Employee.create(user: self) # Associations must be defined correctly for this syntax, avoids using ID's directly.
+  end
 end

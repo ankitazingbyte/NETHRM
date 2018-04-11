@@ -1,0 +1,64 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Training type:</strong>
+  <%= @training_event.training_type %>
+</p>
+
+<p>
+  <strong>Subject:</strong>
+  <%= @training_event.subject %>
+</p>
+
+<p>
+  <strong>Nature of training:</strong>
+  <%= @training_event.nature_of_training %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @training_event.title %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @training_event.location %>
+</p>
+
+<p>
+  <strong>Sponsored by:</strong>
+  <%= @training_event.sponsored_by %>
+</p>
+
+<p>
+  <strong>Organized by:</strong>
+  <%= @training_event.organized_by %>
+</p>
+
+<p>
+  <strong>Training from:</strong>
+  <%= @training_event.training_from %>
+</p>
+
+<p>
+  <strong>Training to:</strong>
+  <%= @training_event.training_to %>
+</p>
+
+<p>
+  <strong> employee:</strong>
+  <%= @training_event.admin_employee_id %>
+</p>
+
+<p>
+  <strong> trainer:</strong>
+  <%= @training_event.admin_trainer_id %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @training_event.status %>
+</p>
+
+<%= link_to 'Edit', edit_admin_training_event_path(@training_event) %> |
+<%= link_to 'Back', admin_training_events_path %>

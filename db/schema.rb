@@ -10,7 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180410112738) do
+ActiveRecord::Schema.define(version: 20180411124528) do
+
+  create_table "assesments", force: :cascade do |t|
+    t.integer "department_id"
+    t.string "training_type"
+    t.string "training_subject"
+    t.string "nature_of_training"
+    t.string "training_title"
+    t.integer "employee_id"
+    t.string "training_reason"
+    t.integer "trainer_id"
+    t.string "location"
+    t.string "start_date"
+    t.string "end_date"
+    t.string "training_cost"
+    t.string "travel_cost"
+    t.string "status"
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "awards", force: :cascade do |t|
     t.string "name"
@@ -19,6 +39,17 @@ ActiveRecord::Schema.define(version: 20180410112738) do
     t.string "cash_price"
     t.string "month"
     t.string "year"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "banks", force: :cascade do |t|
+    t.string "name"
+    t.string "branch_name"
+    t.string "account_name"
+    t.string "account_number"
+    t.string "ifsc_code"
+    t.string "pan_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -32,6 +63,13 @@ ActiveRecord::Schema.define(version: 20180410112738) do
   create_table "designations", force: :cascade do |t|
     t.string "name"
     t.integer "department_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "documents", force: :cascade do |t|
+    t.string "name"
+    t.string "attachment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -58,6 +96,13 @@ ActiveRecord::Schema.define(version: 20180410112738) do
     t.string "tax_example"
     t.integer "employee_role_id"
     t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "evaluations", force: :cascade do |t|
+    t.string "title"
+    t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -167,6 +212,73 @@ ActiveRecord::Schema.define(version: 20180410112738) do
     t.string "loan"
     t.integer "Leave_deduction"
     t.string "grand_total"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tasks", force: :cascade do |t|
+    t.string "attachment"
+    t.string "title"
+    t.integer "employee_id"
+    t.string "start_date"
+    t.string "due_date"
+    t.string "estimated_hour"
+    t.string "progress"
+    t.string "status"
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "trainers", force: :cascade do |t|
+    t.string "first_name"
+    t.string "lastname"
+    t.string "designation"
+    t.string "organization"
+    t.string "address"
+    t.string "city"
+    t.string "state"
+    t.string "zip_code"
+    t.string "country"
+    t.string "email"
+    t.string "phone"
+    t.string "trainer_expertise"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "training_events", force: :cascade do |t|
+    t.string "training_type"
+    t.string "subject"
+    t.string "nature_of_training"
+    t.string "title"
+    t.string "location"
+    t.string "sponsored_by"
+    t.string "organized_by"
+    t.string "training_from"
+    t.string "training_to"
+    t.integer "employee_id"
+    t.integer "trainer_id"
+    t.string "status"
+    t.string "external"
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "trainings", force: :cascade do |t|
+    t.integer "employee_id"
+    t.string "training_from"
+    t.string "training_to"
+    t.string "location"
+    t.string "sponsored_by"
+    t.string "organized_by"
+    t.string "description"
+    t.string "training_type"
+    t.string "training_subject"
+    t.string "nature"
+    t.string "title"
+    t.integer "trainer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
