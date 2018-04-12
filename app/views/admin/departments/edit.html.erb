@@ -1,6 +1,14 @@
-<h1>Editing Department</h1>
-
-<%= render 'form', department: @department %>
+<div class="modal-dialog">
+  	<div class="modal-content">
+	    <div class="modal-header">
+	      <button type="button" class="close" data-dismiss="modal">×</button>
+	      <h3 class="modal-title">Edit Department</h3>
+	    </div>
+	    <div class="modal-body form-group form-admin">
+			<%= render 'form', department: @department %>
+		</div>
+	</div>
+</div>
 
 <%= link_to 'Show', @department %> |
 <%= link_to 'Back', departments_path %>

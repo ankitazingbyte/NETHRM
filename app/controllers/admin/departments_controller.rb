@@ -14,9 +14,9 @@ class Admin::DepartmentsController < ApplicationController
   end
 
   # GET /departments/new
-  def new
-    @department = Department.new
-  end
+  # def new
+  #   @department = Department.new
+  # end
 
   # GET /departments/1/edit
   def edit
@@ -31,7 +31,9 @@ class Admin::DepartmentsController < ApplicationController
       flash[:success] = "Department successfully created"
       redirect_to action: "index", alert: @department.errors.full_messages
     else
-      render :new 
+          @departments = Department.all
+
+      render :new, locals: {department: @department,departments: @departments } 
     end
   end
 
