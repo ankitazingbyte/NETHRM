@@ -37,7 +37,7 @@
                                             <td data-label="Status"><p class="btn btn-success btn-xs"><%= loan.status %> </p></td>
                                             <td data-label="Actions">
                                                 <%= link_to edit_admin_loan_path(loan), class: "btn btn-success btn-xs" do %><i class="fa fa-edit"></i> Edit<% end %>
-                                                <%#= link_to admin_loan, method: :delete, data: { confirm: 'Are you sure?' },class: "btn btn-danger btn-xs" do %><i class="fa fa-trash"></i> Delete<%# end %>
+                                                <%= link_to admin_loan_path(loan), method: :delete, data: { confirm: 'Are you sure?' },class: "btn btn-danger btn-xs" do %><i class="fa fa-trash"></i> Delete<% end %>
                                             </td>
                                         </tr>
                                     <% end %>

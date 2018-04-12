@@ -51,7 +51,7 @@ class Admin::IncreamentsController < ApplicationController
   def destroy
     @increament.destroy
     flash[:success] = "Increament successfully deleted"
-      redirect_to increaments_url 
+      redirect_to action: "index" 
   end
 
   private

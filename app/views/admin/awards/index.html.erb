@@ -33,7 +33,7 @@
                                 <td data-label="month"><p><%= award.month %> <%= award.year %></p></td>
                                 <td data-label="Actions">
                                     <%= link_to 'Edit', edit_admin_award_path(award), class: "btn btn-success btn-xs" %>
-                                    <%#= link_to 'Destroy', admin_award, class: "btn btn-danger btn-xs",method: :delete, data: { confirm: 'Are you sure?' } %>
+                                    <%= link_to 'Destroy', admin_award_path(award), class: "btn btn-danger btn-xs",method: :delete, data: { confirm: 'Are you sure?' } %>
                                 </td>
                             </tr>
                           <% end %>

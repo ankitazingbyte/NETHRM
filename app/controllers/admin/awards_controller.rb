@@ -25,9 +25,9 @@ class Admin::AwardsController < ApplicationController
   # POST /awards
   # POST /awards.json
   def create
-    @admin_award = Admin::Award.new(admin_award_params)
+    @award = Award.new(award_params)
 
-    if @admin_award.save
+    if @award.save
       flash[:success] = "Award successfully created"
       redirect_to action: "index"
     else
@@ -37,7 +37,7 @@ class Admin::AwardsController < ApplicationController
 
   def update
 
-    if @admin_award.update(admin_award_params)
+    if @award.update(award_params)
       flash[:success] = "Award successfully updated"
       redirect_to action: "index"
     else
@@ -46,9 +46,9 @@ class Admin::AwardsController < ApplicationController
   end
 
   def destroy
-    @admin_award.destroy
+    @award.destroy
     flash[:success] = "Award successfully deleted"
-    redirect_to admin_awards_url
+    redirect_to action: "index"
   end
 
   private

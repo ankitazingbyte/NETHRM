@@ -38,7 +38,7 @@ class Admin::DesignationsController < ApplicationController
   def update
     if @designation.update(designation_params)
       flash[:success] = "Designation successfully updated"
-      redirect_to @designation
+      redirect_to action: "index"
     else
       render 'edit'
     end
@@ -47,7 +47,7 @@ class Admin::DesignationsController < ApplicationController
   def destroy
     @designation.destroy
     flash[:success] = "Designation successfully deleted"
-    redirect_to designations_url
+    redirect_to action: "index"
   end
 
   private

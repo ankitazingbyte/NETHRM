@@ -10,7 +10,7 @@
                         <h3 class="panel-title">Task Basic Info</h3>
                     </div>
                     <div class="panel-body">
-                        <%= render 'form', admin_task: @admin_task %>
+                        <%= render 'form', task: @task %>
                     </div>
                 </div>
             </div>
@@ -35,20 +35,20 @@
                                     <div role="tabpanel" class="tab-pane active" id="task_details">
                                         <div class="form-group">
                                             <label>Task Title</label>
-                                            <p> <%= @admin_task.title %> </p>
+                                            <p> <%= @task.title %> </p>
                                         </div>
 
                                         <div class="form-group">
                                             <label>Task Description</label>
-                                            <p><p><%= @admin_task.description.html_safe %><br></p></p>
+                                            <p><p><%= @task.description.html_safe %><br></p></p>
                                         </div>
 
                                         <h3>Task Members:</h3>
                                         <hr>
-                                           <%= Admin::Employee.where(id: @admin_task.admin_employee_id)[0].first_name if @admin_task.admin_employee_id %><br>
+                                           <%= Employee.where(id: @task.employee_id)[0].first_name if @task.employee_id %><br>
                                     </div>
                                     <div role="tabpanel" class="tab-pane" id="task_discussion">
-                                        <%= render 'admin/task_discussions/form'%>
+                                        <%= render 'admin/descussions/form'%>
                                         <br>
                                         <hr>
                                         <table class="table table-hover">
@@ -60,18 +60,18 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <% @admin_task_discussions.each do |admin_task_discussion| %>
+                                                <% @discussions.each do |discussion| %>
                                                     <tr>
                                                         <td data-label="Member"><p>Coder</p></td>
-                                                        <td data-label="Comment"><p><%= admin_task_discussion.comment %></p></td>
-                                                        <td data-label="Last Update"><p><%= admin_task_discussion.created_at %></p></td>
+                                                        <td data-label="Comment"><p><%= discussion.comment %></p></td>
+                                                        <td data-label="Last Update"><p><%= discussion.created_at %></p></td>
                                                     </tr>
                                                 <% end %>
                                             </tbody>
                                         </table>
                                     </div>
                                     <div role="tabpanel" class="tab-pane" id="task_files">
-                                        <%= render 'admin/task_files/form'%>
+                                        <%#= render 'admin/task_files/form'%>
                                         <br>
                                         <hr>
                                         <table class="table table-hover">
@@ -85,18 +85,18 @@
                                             </tr>
                                             </thead>
                                             <tbody>
-                                                <% @admin_task_files.each do |admin_task_file| %>
+                                                <%# @task_files.each do |task_file| %>
                                                     <tr>
-                                                     <td data-label="Files"><p><%= admin_task_file.title %></p></td>
+                                                     <td data-label="Files"><p><%#= task_file.title %></p></td>
                                                         <td data-label="Size"><p>135.72 KB</p></td>
-                                                        <td data-label="Size"><p><%= admin_task_file.created_at %></p></td>
+                                                        <td data-label="Size"><p><%#= task_file.created_at %></p></td>
                                                         <td data-label="Member"><p>Coder</p></td>
                                                         <td data-label="actions">
-                                                            <%= link_to admin_task_file.attachment_url do %><i class="fa fa-download"></i> <% end %>
-                                                            <%= link_to admin_task_file, class: "btn btn-danger btn-xs", method: :delete, data: { confirm: 'Are you sure?' } do %><i class="fa fa-trash"></i><% end %>
+                                                            <%#= link_to task_file.attachment_url do %><i class="fa fa-download"></i> <%# end %>
+                                                            <%#= link_to task_file, class: "btn btn-danger btn-xs", method: :delete, data: { confirm: 'Are you sure?' } do %><i class="fa fa-trash"></i><%# end %>
                                                         </td>
                                                     </tr>
-                                                <% end %>
+                                                <%# end %>
                                             </tbody>
                                         </table>
                                     </div>

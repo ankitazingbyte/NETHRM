@@ -51,7 +51,7 @@ class Admin::LoansController < ApplicationController
   def destroy
     @loan.destroy
     flash[:success] = "Loan was successfully destroyed."
-      redirect_to loans_url 
+      redirect_to action: "index" 
   end
 
   private

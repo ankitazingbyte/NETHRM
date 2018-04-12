@@ -40,7 +40,7 @@
                                         <td><%= designation.name %></td>
                                         <td><%= Department.where(id: designation.department_id)[0].name if designation.department_id %></td>
                                         <td><%= link_to 'Edit', edit_admin_designation_path(designation), class: "btn btn-success btn-xs bottom", remote: true %>
-                                            <%#= link_to 'Destroy', admin_designation, method: :delete, data: { confirm: 'Are you sure?' },class: "btn btn-danger btn-xs" %>
+                                            <%= link_to 'Destroy', admin_designation_path(designation), method: :delete, data: { confirm: 'Are you sure?' },class: "btn btn-danger btn-xs" %>
                                         </td>
                                     </tr>
                                 <% end %>

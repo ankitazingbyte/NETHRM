@@ -48,7 +48,7 @@ class Admin::TrainingEventsController < ApplicationController
   # DELETE /training_events/1.json
   def destroy
     @training_event.destroy
-      redirect_to training_events_url, notice: 'Training event was successfully destroyed.' 
+      redirect_to action: "index", notice: 'Training event was successfully destroyed.' 
   end
 
   private

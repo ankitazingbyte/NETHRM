@@ -1,5 +1,5 @@
 <%= form_for @fund, :url => admin_fund_path do |form| %>
-  <% if fund.errors.any? %>
+  <% if @fund.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(fund.errors.count, "error") %> prohibited this fund from being saved:</h2>
 

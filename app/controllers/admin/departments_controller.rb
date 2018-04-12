@@ -49,8 +49,7 @@ class Admin::DepartmentsController < ApplicationController
   def destroy
     @department.destroy
     flash[:success] = "Department successfully deleted"
-    redirect_to departments_url
-
+    redirect_to action: "index"
   end
 
   private

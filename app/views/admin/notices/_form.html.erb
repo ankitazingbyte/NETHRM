@@ -1,4 +1,17 @@
-<%= form_for @notice, :url => admin_notices_path do |form| %>
+<%= form_for @notice, :url => admin_notice_path do |form| %>
+    <% if @notice.errors.any? %>
+        <div id="error_explanation">
+          <h2>
+            <%= pluralize(@notice.errors.count, "error") %> prohibited
+            this notice from being saved:
+          </h2>
+          <ul>
+            <% @notice.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
     <div class="form-group">
         <label>Notice Title</label>
         <%= form.text_field :title, class: "form-control" %> 

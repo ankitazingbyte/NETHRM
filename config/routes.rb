@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  
 	root "admin/home#index"
   	devise_for :users
   	# For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
@@ -23,6 +24,7 @@ Rails.application.routes.draw do
   		resources :training_events
   		resources :evaluations
   		resources :tasks
+  		resources :descussions
 	 	get "home/index"
 	 	root "home#index"
 	end
