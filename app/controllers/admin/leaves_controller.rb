@@ -51,7 +51,7 @@ class Admin::LeavesController < ApplicationController
   def destroy
     @leave.destroy
     flash[:success] = "Leave was successfully destroyed."
-      redirect_to leaves_url
+      redirect_to action: "index"
   end
 
   private

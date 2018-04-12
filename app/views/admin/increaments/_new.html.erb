@@ -1,4 +1,16 @@
 <%= form_for @increament, :url => admin_increaments_path do |form| %>
+    <% if @increament.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(increament.errors.count, "error") %> prohibited this admin_increament from being saved:</h2>
+
+          <ul>
+          <% increament.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+    <% end %>
+
 	<div class="modal-body">
         <div class="form-group">
             <label>Employee</label>

@@ -51,7 +51,7 @@ class Admin::ExpensesController < ApplicationController
   def destroy
     @expense.destroy
     flash[:success] = "Expense successfully deleted"
-      redirect_to expenses_url 
+      redirect_to action: "index"
   end
 
   private

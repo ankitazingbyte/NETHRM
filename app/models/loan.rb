@@ -1,2 +1,6 @@
 class Loan < ApplicationRecord
+	validates :loan_amount, format: { with: /\A\d+\z/, message: "must be in numeric." }
+	validates :monthly_payement, format: { with: /\A\d+\z/, message: "must be in numeric." }
+	validates :title, presence: true, uniqueness: { case_sensitive: false }, format: {with:  /\A[a-zA-Z]+\z/,
+    message: "Only letters allowed"}
 end

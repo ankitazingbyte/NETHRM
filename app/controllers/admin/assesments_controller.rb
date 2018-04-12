@@ -48,7 +48,7 @@ class Admin::AssesmentsController < ApplicationController
   # DELETE /assesments/1.json
   def destroy
     @assesment.destroy
-      redirect_to assesments_url, notice: 'Assesment was successfully destroyed.' 
+      redirect_to action: "index", notice: 'Assesment was successfully destroyed.' 
   end
 
   private

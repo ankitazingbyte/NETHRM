@@ -51,7 +51,7 @@ class Admin::FundsController < ApplicationController
   def destroy
     @fund.destroy
       flash[:success] = "Fund successfully deleted"
-      redirect_to funds_url
+      redirect_to action: "index"
   end
 
   private

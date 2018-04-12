@@ -32,7 +32,8 @@
                                         <td><p><%= increament.current_salary %></p></td>
                                         <td><p><%= increament.increament_salary %></p></td>
                                         <td data-label="Actions" class="text-right">
-                                            <%= link_to edit_admin_increament_path(increament), class: "btn btn-success btn-xs" do %><i class="fa fa-edit"></i> Edit<% end %></td>
+                                            <%= link_to edit_admin_increament_path(increament), class: "btn btn-success btn-xs" do %><i class="fa fa-edit"></i> Edit<% end %>
+                                            <%= link_to 'Destroy', admin_increament_path(increament), method: :delete, data: { confirm: 'Are you sure?' },class: "btn btn-danger btn-xs" %></td>
                                         </td>
                                     </tr>
                                 <% end %>

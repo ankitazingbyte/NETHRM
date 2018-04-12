@@ -51,7 +51,7 @@ class Admin::NoticesController < ApplicationController
   def destroy
     @notice.destroy
     flash[:success] = "Notice was successfully destroyed."
-      redirect_to notices_url 
+      redirect_to action: "index" 
   end
 
   private

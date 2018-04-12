@@ -35,7 +35,7 @@
                                     <td><%= jobapp.close_date %></td>
                                     <td class= "btn btn-primary btn-xs" ><%= jobapp.status %></td>
                                     <td><%= link_to 'Edit', edit_admin_jobapp_path(jobapp), class: "btn btn-success" %>
-                                        <%#= link_to 'Destroy', jobapp_path, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
+                                        <%= link_to 'Destroy', admin_jobapp_path(jobapp), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
                                   </tr>
                                 <% end %>
                             </tbody>

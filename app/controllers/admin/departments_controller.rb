@@ -14,9 +14,9 @@ class Admin::DepartmentsController < ApplicationController
   end
 
   # GET /departments/new
-  def new
-    @department = Department.new
-  end
+  # def new
+  #   @department = Department.new
+  # end
 
   # GET /departments/1/edit
   def edit
@@ -47,8 +47,7 @@ class Admin::DepartmentsController < ApplicationController
   def destroy
     @department.destroy
     flash[:success] = "Department successfully deleted"
-    redirect_to departments_url
-
+    redirect_to action: "index"
   end
 
   private

@@ -51,7 +51,7 @@ class Admin::SalslipsController < ApplicationController
   def destroy
     @salslip.destroy
     flash[:success] = "Salslip was successfully destroyed."
-      redirect_to salslips_url 
+      redirect_to action: "index" 
   end
 
   private
@@ -62,6 +62,6 @@ class Admin::SalslipsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def salslip_params
-      params.require(:salslip).permit(:employee_id, :tax, :increment_id, :department_id, :designation_id, :basic_salary, :payment_by, :provident_fund, :Leave_deduction, :grand_total)
+      params.require(:salslip).permit(:employee_id, :tax, :loan, :increment_id, :department_id, :designation_id, :basic_salary, :payment_by, :provident_fund, :Leave_deduction, :grand_total)
     end
 end

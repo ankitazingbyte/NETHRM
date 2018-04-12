@@ -6,6 +6,7 @@ class Admin::TasksController < ApplicationController
   def index
     @tasks = Task.all
     @task = Task.new
+    @descussion = Descussion.new
   end
 
   # GET /tasks/1
@@ -48,7 +49,7 @@ class Admin::TasksController < ApplicationController
   # DELETE /tasks/1.json
   def destroy
     @task.destroy
-      redirect_to tasks_url, notice: 'Task was successfully destroyed.' 
+      redirect_to action: "index", notice: 'Task was successfully destroyed.' 
   end
 
   private

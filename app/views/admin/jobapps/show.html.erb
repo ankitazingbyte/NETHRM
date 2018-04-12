@@ -2,68 +2,68 @@
 
 <p>
   <strong>Designation:</strong>
-  <%= @admin_job.admin_designation_id %>
+  <%= @jobapp.designation_id %>
 </p>
 
 <p>
   <strong>Number of post:</strong>
-  <%= @admin_job.number_of_post %>
+  <%= @jobapp.number_of_post %>
 </p>
 
 <p>
   <strong>Job type:</strong>
-  <%= @admin_job.job_type %>
+  <%= @jobapp.job_type %>
 </p>
 
 <p>
   <strong>Experience:</strong>
-  <%= @admin_job.experience %>
+  <%= @jobapp.experience %>
 </p>
 
 <p>
   <strong>Age:</strong>
-  <%= @admin_job.age %>
+  <%= @jobapp.age %>
 </p>
 
 <p>
   <strong>Job location:</strong>
-  <%= @admin_job.job_location %>
+  <%= @jobapp.job_location %>
 </p>
 
 <p>
   <strong>Salary:</strong>
-  <%= @admin_job.salary %>
+  <%= @jobapp.salary %>
 </p>
 
 <p>
   <strong>Post date:</strong>
-  <%= @admin_job.post_date %>
+  <%= @jobapp.post_date %>
 </p>
 
 <p>
   <strong>Last date to apply:</strong>
-  <%= @admin_job.last_date_to_apply %>
+  <%= @jobapp.last_date_to_apply %>
 </p>
 
 <p>
   <strong>Close date:</strong>
-  <%= @admin_job.close_date %>
+  <%= @jobapp.close_date %>
 </p>
 
 <p>
   <strong>Status:</strong>
-  <%= @admin_job.status %>
+  <%= @jobapp.status %>
 </p>
 
 <p>
   <strong>Short description:</strong>
-  <%= @admin_job.short_description %>
+  <%= @jobapp.short_description %>
 </p>
 
 <p>
   <strong>Description:</strong>
-  <%= @admin_job.description.html_safe %>
+  <%= @jobapp.description.html_safe %>
 </p>
 
-<%= link_to 'Edit', edit_admin_job_path(@admin_job) %> |
-<%= link_to 'Back', admin_jobs_path %>
+<%= link_to 'Edit', edit_admin_jobapp_path(@jobapp) %> |
+<%= link_to 'Back', admin_jobapps_path %>

@@ -35,7 +35,7 @@
                                         <td data-label="Status"><p class="btn btn-success btn-xs"><%= expense.status %></p></td>
                                         <td data-label="Actions" class="text-right">
                                             <%= link_to 'Edit', edit_admin_expense_path(expense), class: "btn btn-success" %>
-                                            <%#= link_to 'Destroy', admin_expense, class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
+                                            <%= link_to 'Destroy', admin_expense_path(expense), class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
                                         </td>
                                     </tr>
                                 <% end %>

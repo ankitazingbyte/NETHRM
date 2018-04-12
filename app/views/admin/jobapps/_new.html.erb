@@ -1,4 +1,17 @@
 <%= form_for @jobapp, :url => admin_jobapps_path do |form| %>
+    <% if @jobapp.errors.any? %>
+        <div id="error_explanation">
+          <h2>
+            <%= pluralize(@jobapp.errors.count, "error") %> prohibited
+            this jobapp from being saved:
+          </h2>
+          <ul>
+            <% @jobapp.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
     <div class="modal-body">
         <div class="form-group">
             <label>Position</label>
@@ -18,7 +31,7 @@
 
         <div class="form-group">
             <label>Experience</label>
-            <%= form.text_field :experience, class: "form-control" %>
+            <%= form.select :experience, %w{0-1yr 1-2yr 2-3yr above3yr}, :prompt => 'Select', required: true, placeholder: 'experience', class: 'form-control' %>
         </div>
 
         <div class="form-group">

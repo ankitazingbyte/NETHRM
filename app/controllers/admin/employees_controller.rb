@@ -55,7 +55,7 @@ class Admin::EmployeesController < ApplicationController
   def destroy
     @employee.destroy
     flash[:success] = "Employee successfully deleted"
-      redirect_to admin_employees_url
+      redirect_to action: "index"
   end
 
   private

@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Admin Discussions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Comment</th>
+      <th>String</th>
+      <th>Admin employee</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @discussions.each do |discussion| %>
+      <tr>
+        <td><%= discussion.comment %></td>
+        <td><%= discussion.admin_employee_id %></td>
+        <td><%= link_to 'Show', discussion_path(discussion) %></td>
+        <td><%= link_to 'Edit', edit_discussion_path(discussion) %></td>
+        <td><%= link_to 'Destroy', admin_task_discussion, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Discussion', new_admin_discussion_path %>

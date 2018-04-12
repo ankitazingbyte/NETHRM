@@ -31,7 +31,7 @@ class Admin::JobappsController < ApplicationController
         flash[:success] = "Jobapp was successfully created."
         redirect_to action: "index"
       else
-        render :new 
+        render "new"
       end
   end
 
@@ -42,7 +42,7 @@ class Admin::JobappsController < ApplicationController
         flash[:success] = "Jobapp was successfully updated."
         redirect_to action: "index"
       else
-        render :edit 
+        render "edit" 
       end
   end
 
@@ -51,7 +51,7 @@ class Admin::JobappsController < ApplicationController
   def destroy
     @jobapp.destroy
     flash[:success] = "Jobapp was successfully destroyed"
-      redirect_to jobapps_url
+      redirect_to action: "index"
   end
 
   private

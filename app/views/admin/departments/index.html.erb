@@ -13,7 +13,7 @@
                         <div class="form-group">
                             <label>Department Name</label>
                             <span class="help">e.g. "Account Department"</span>
-                            <%= render 'new', department: @department %>
+                            <%= render 'form', locals: {department: @department, departments: @departments} %>
                         </div>
                     </div>
                 </div>
@@ -41,7 +41,7 @@
                                             <%= link_to 'Edit', edit_admin_department_path(department), class: "btn btn-success btn-xs bottom", remote: true %>
                                               <!-- <button type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#myModal">Edit</button> -->
 
-                                            <%#= link_to 'Destroy', admin_department_path, method: :delete, data: { confirm: 'Are you sure?' },class: "btn btn-danger btn-xs" %>
+                                            <%= link_to 'Destroy', admin_department_path(department), method: :delete, data: { confirm: 'Are you sure?' },class: "btn btn-danger btn-xs" %>
                                         </td>
                                     </tr>
                                 <% end %>
