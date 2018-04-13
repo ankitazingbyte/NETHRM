@@ -1,0 +1,162 @@
+<section class="wrapper-bottom-sec">
+    <div class="p-30">
+        <h2 class="page-title">Manage Support Ticket</h2>
+    </div>
+    <div class="p-30 p-t-none p-b-none">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="panel">
+                    <div class="panel-body">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Change Basic Info</h3>
+                        </div>
+                        <%= render "form", ticket: @ticket %>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-8">
+                <div class="panel">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Ticket Management</h3>
+                    </div>
+                    <div class="p-30 p-t-none p-b-none">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <!-- Nav tabs -->
+                                <ul class="nav nav-tabs" role="tablist">
+                                    <li role="presentation" class="active"><a href="#ticket_details" aria-controls="home" role="tab" data-toggle="tab">Ticket Details</a></li>
+                                    <li role="presentation"><a href="#ticket_discussion" aria-controls="profile" role="tab" data-toggle="tab">Ticket Discussion</a></li>
+                                    <li role="presentation"><a href="#ticket_files" aria-controls="messages" role="tab" data-toggle="tab">Ticket Files</a></li>
+                                </ul>
+                                <!-- Tab panes -->
+                                <div class="tab-content p-20">
+                                    <div role="tabpanel" class="tab-pane active" id="ticket_details">
+                                        <div class="clearfix ticket-de-pane">
+                                            <span class="ticket-status-title">Ticket For:</span>
+                                            <span class="ticket-status-content"><%= @ticket.employee_id %></span>
+                                        </div>
+
+                                        <div class="clearfix ticket-de-pane">
+                                            <span class="ticket-status-title">Email:</span>
+                                            <span class="ticket-status-content"><%= @ticket.employee_id %></span>
+                                        </div>
+
+                                        <div class="clearfix ticket-de-pane">
+                                            <span class="ticket-status-title">Created Date:</span>
+                                            <span class="ticket-status-content"><%= @ticket.created_at %></span>
+                                        </div>
+
+                                        <div class="clearfix ticket-de-pane">
+                                            <span class="ticket-status-title">Created By:</span>
+                                            <span class="ticket-status-content"><%= @ticket.employee_id %></span>
+                                        </div>
+
+                                        <div class="clearfix ticket-de-pane">
+                                            <span class="ticket-status-title">Department:</span>
+                                            <span class="ticket-status-content"><%= @ticket.department_id %></span>
+                                        </div>
+
+                                        <div class="clearfix ticket-de-pane">
+                                            <span class="ticket-status-title">Status:</span>
+                                            <span class="label label-success"><%= @ticket.status %></span>
+                                        </div>
+                                        <div class="m-t-30"></div>
+                                        <div class="clearfix">
+                                            <span class="ticket-status-title">Subject:</span>
+                                            <span class="ticket-status-content"><%= @ticket.subject %></span>
+                                        </div>
+                                        <div class="clearfix">
+                                            <span class="ticket-status-title">Message:</span>
+                                            <div class="ticket-status-content"><div><p><%= @ticket.message.html_safe %></p></div></div>
+                                        </div>
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane" id="ticket_discussion">
+                                        <form method="POST" action="http://coderpixel.com/demo/advanced-hrm/support-tickets/replay-ticket">
+                                            <input type="hidden" name="_token" value="CagNIg6L3NAkhODzZFA8kLrjpqxjaeYJDdQMe5so">
+                                            <div class="form-group">
+                                                <label for="message">Message</label>
+                                                <textarea class="textarea-wysihtml5 form-control"  name="message"></textarea>
+                                            </div>
+                                            <div class="hr-line-dashed"></div>
+                                            <input type="hidden" value="1" name="cmd">
+                                            <button type="submit" name="add" class="btn btn-success"> Reply Ticket <i class="fa fa-reply"></i></button>
+                                        </form>
+                                        <div class="m-t-30"></div>
+                                        <div class="support-replies">              
+                                            <div class="single-support-reply clearfix admin">
+                                                <div class="reply-info">
+                                                    <div class="reply-info-text">
+                                                        <h4 class="reply-user-name">Coder</h4>
+                                                        <h5 class="reply-date"> - 1st Apr 17</h5>
+                                                        <h5 class="reply-user-type"><span class="label label-success">Admin</span></h5>
+                                                        <div class="reply-message"><p>Reply From Admin</p></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="single-support-reply clearfix client">
+                                                <div class="reply-info">
+                                                    <img class="reply-user-thumb" src="http://coderpixel.com/demo/advanced-hrm/assets/employee_pic/DSC_0015 (1).JPG" height="80px" width="80px">
+                                                    <div class="reply-info-text">
+                                                        <h4 class="reply-user-name">Abul Kashem Shamim</h4>
+                                                        <h5 class="reply-date">1st Apr 17</h5>
+                                                        <h5 class="reply-user-type"><span class="label label-success">Employee</span></h5>
+                                                        <div class="reply-message"><p>Reply From Employee<br></p></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane" id="ticket_files">
+                                        <form role="form" method="post" action="http://coderpixel.com/demo/advanced-hrm/support-ticket/post-ticket-files" enctype="multipart/form-data">
+
+                                            <div class="row">
+                                                <div class="form-group">
+                                                    <label>File Title</label>
+                                                    <input type="text" name="file_title" class="form-control">
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label>Select File</label>
+                                                    <div class="input-group input-group-file">
+                                                        <span class="input-group-btn">
+                                                            <span class="btn btn-primary btn-file">
+                                                                Browse <input type="file" class="form-control" name="file">
+                                                            </span>
+                                                        </span>
+                                                        <input type="text" class="form-control" readonly="">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <input type="hidden" name="_token" value="CagNIg6L3NAkhODzZFA8kLrjpqxjaeYJDdQMe5so">
+                                                    <input type="hidden" value="1" name="cmd">
+                                                    <input type="submit" value="Upload" class="btn btn-success pull-right">
+                                                </div>
+                                            </div>
+                                        </form>
+                                        <br>
+                                        <hr>
+                                        <table class="table table-hover">
+                                            <thead>
+                                            <tr>
+                                                <th style="width: 20%;">Files</th>
+                                                <th style="width: 15%;">Size</th>
+                                                <th style="width: 20%;">Date</th>
+                                                <th style="width: 25%;">Upload By</th>
+                                                <th style="width: 20%;">Actions</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

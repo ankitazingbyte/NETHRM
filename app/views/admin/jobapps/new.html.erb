@@ -1,1 +1,11 @@
-<%= render 'form', jobapp: @jobapp %>
+<div class="modal-dialog">
+  	<div class="modal-content">
+	    <div class="modal-header">
+	      <button type="button" class="close" data-dismiss="modal">×</button>
+	      <h3 class="modal-title">Edit Jobapp</h3>
+	    </div>
+		<div class="modal-body">
+		 <%= render 'jobapp_listing', {jobapp: @jobapp, jobapps: @jobapps } %>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @support.name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @support.email %>
+</p>
+
+<p>
+  <strong>Show in client:</strong>
+  <%= @support.show_in_client %>
+</p>
+
+<%= link_to 'Edit', edit_admin_support_department_path(@support) %> |
+<%= link_to 'Back', admin_support_departments_path %>

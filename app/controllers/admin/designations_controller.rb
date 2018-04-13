@@ -14,9 +14,9 @@ class Admin::DesignationsController < ApplicationController
   end
 
   # GET /designations/new
-  def new
-    @designation = Designation.new
-  end
+  # def new
+  #   @designation = Designation.new
+  # end
 
   # GET /designations/1/edit
   def edit
@@ -31,7 +31,9 @@ class Admin::DesignationsController < ApplicationController
       flash[:success] = "Designation successfully created"
       redirect_to action: "index"
     else
-       render 'new' 
+       @designations = Designation.all
+
+      render :new, locals: {designation: @designation,designations: @designations} 
     end
   end
 

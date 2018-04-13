@@ -60,11 +60,11 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <% @discussions.each do |discussion| %>
+                                                <% @descussions.each do |descussion| %>
                                                     <tr>
                                                         <td data-label="Member"><p>Coder</p></td>
-                                                        <td data-label="Comment"><p><%= discussion.comment %></p></td>
-                                                        <td data-label="Last Update"><p><%= discussion.created_at %></p></td>
+                                                        <td data-label="Comment"><p><%= descussion.comment %></p></td>
+                                                        <td data-label="Last Update"><p><%= descussion.created_at %></p></td>
                                                     </tr>
                                                 <% end %>
                                             </tbody>

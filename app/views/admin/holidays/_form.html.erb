@@ -1,0 +1,25 @@
+<%= form_for @holiday, url: admin_holidays_path do |form| %>
+  <% if holiday.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(holiday.errors.count, "error") %> prohibited this holiday from being saved:</h2>
+
+      <ul>
+      <% holiday.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <label>Date</label>
+    <%= form.text_field :date, class: "form-control datePicker" %>
+  </div>
+
+  <div class="form-group">
+    <label>Occasion</label>
+    <%= form.text_field :occasion, class: "form-control datePicker" %>
+  </div>
+
+    <%= form.submit "Add", class: "btn btn-success btn-sm pull-right" %>
+<% end %>

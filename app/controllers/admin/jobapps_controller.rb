@@ -31,7 +31,9 @@ class Admin::JobappsController < ApplicationController
         flash[:success] = "Jobapp was successfully created."
         redirect_to action: "index"
       else
-        render "new"
+        @jobapps = Jobapp.all
+
+      render :new, locals: {jobapp: @jobapp,jobapps: @jobapps}
       end
   end
 

@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong> Employee:</strong>
+  <%= @ticket.admin_employee_id %>
+</p>
+
+<p>
+  <strong>Subject:</strong>
+  <%= @ticket.subject %>
+</p>
+
+<p>
+  <strong>Message:</strong>
+  <%= @ticket.message %>
+</p>
+
+<%= link_to 'Edit', edit_admin_ticket_path(@ticket) %> |
+<%= link_to 'Back', admin_tickets_path %>

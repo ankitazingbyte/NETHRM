@@ -31,7 +31,8 @@ class Admin::AwardsController < ApplicationController
       flash[:success] = "Award successfully created"
       redirect_to action: "index"
     else
-      render 'new'
+      @awards = Award.all
+      render 'new', locals: {award: @award, awards:@awards}
     end
   end
 

@@ -6,12 +6,13 @@ class Admin::TasksController < ApplicationController
   def index
     @tasks = Task.all
     @task = Task.new
-    @descussion = Descussion.new
   end
 
   # GET /tasks/1
   # GET /tasks/1.json
   def show
+    @descussion = Descussion.new
+    @descussion = Descussion.all
   end
 
   # GET /tasks/new
