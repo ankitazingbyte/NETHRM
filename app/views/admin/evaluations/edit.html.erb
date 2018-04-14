@@ -1,6 +1,14 @@
-<h1>Editing Evaluation</h1>
-
-<%= render 'form', evaluation: @evaluation %>
-
+<div class="modal-dialog">
+  	<div class="modal-content">
+	    <div class="modal-header">
+	      <button type="button" class="close" data-dismiss="modal">×</button>
+	      <h4 class="modal-title">Edit Training Evaluations</h4>
+	    </div>
+	    <div class="modal-body form-group form-admin">
+	        <ul class="errors alert-danger"></ul>
+				<%= render 'form', evaluation: @evaluation %>
+		</div>
+	</div>
+</div>
 <%= link_to 'Show', @evaluation %> |
 <%= link_to 'Back', admin_evaluations_path %>

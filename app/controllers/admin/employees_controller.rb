@@ -22,8 +22,8 @@ class Admin::EmployeesController < ApplicationController
   def edit
     @banks = Bank.all
     @bank = Bank.new
-    @documents = Document.all
-    @document = Document.new
+    #@documents = Document.all
+    #@document = Document.new
   end
 
   # POST /employees

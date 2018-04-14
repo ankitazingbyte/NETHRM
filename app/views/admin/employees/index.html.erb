@@ -32,7 +32,7 @@
                                         <td data-label="Status"><p class="btn btn-success btn-xs">Active</p></td>
                                         <td data-label="Actions">
                                             <%= link_to 'Edit', edit_admin_employee_path(employee), class: "btn btn-success btn-xs" %>
-                                            <%#= link_to 'Destroy', employee, method: :delete,class: "btn btn-danger btn-xs", data: { confirm: 'Are you sure?' } %>
+                                            <%= link_to 'Destroy', admin_employee_path(employee), method: :delete,class: "btn btn-danger btn-xs", data: { confirm: 'Are you sure?' } %>
                                         </td>
                                     </tr>
                                 <% end %>

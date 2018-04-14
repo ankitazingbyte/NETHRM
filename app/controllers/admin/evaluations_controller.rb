@@ -30,7 +30,9 @@ class Admin::EvaluationsController < ApplicationController
       if @evaluation.save
         redirect_to action: "index", notice: 'Evaluation was successfully created.' 
       else
-        render :new 
+        @evaluations = Evaluation.all
+
+      render :new, locals: {evaluation: @evaluation, evaluations: @evaluations } 
     end
   end
 
@@ -48,7 +50,7 @@ class Admin::EvaluationsController < ApplicationController
   # DELETE /evaluations/1.json
   def destroy
     @evaluation.destroy
-      redirect_to evaluations_url, notice: 'Evaluation was successfully destroyed.' 
+      redirect_to action: "index", notice: 'Evaluation was successfully destroyed.' 
   end
 
   private

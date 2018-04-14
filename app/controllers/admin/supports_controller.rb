@@ -27,39 +27,28 @@ class Admin::SupportsController < ApplicationController
   def create
     @support = Support.new(support_params)
 
-    respond_to do |format|
       if @support.save
-        format.html { redirect_to @support, notice: 'Support was successfully created.' }
-        format.json { render :show, status: :created, location: @support }
+        redirect_to action: "index", notice: 'Support was successfully created.' 
       else
-        format.html { render :new }
-        format.json { render json: @support.errors, status: :unprocessable_entity }
+        render :new 
       end
-    end
   end
 
   # PATCH/PUT /supports/1
   # PATCH/PUT /supports/1.json
   def update
-    respond_to do |format|
       if @support.update(support_params)
-        format.html { redirect_to @support, notice: 'Support was successfully updated.' }
-        format.json { render :show, status: :ok, location: @support }
+        redirect_to action: "index", notice: 'Support was successfully updated.' 
       else
-        format.html { render :edit }
-        format.json { render json: @support.errors, status: :unprocessable_entity }
+        render :edit 
       end
-    end
   end
 
   # DELETE /supports/1
   # DELETE /supports/1.json
   def destroy
     @support.destroy
-    respond_to do |format|
-      format.html { redirect_to supports_url, notice: 'Support was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+      redirect_to action: "index", notice: 'Support was successfully destroyed.'
   end
 
   private

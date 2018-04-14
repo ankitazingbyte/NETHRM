@@ -26,18 +26,18 @@
                             </thead>
                             <tbody>
                                 <% @leaves.each do |leave| %>
-                                <tr>
-                                    <td data-label="SL"><%= leave.id %></td>
-                                    <td data-label="emoployeCode"><p><%= Employee.where(id: leave.employee_id)[0].first_name if leave.employee_id %></p></td>
-                                    <td data-label="leaveType"><p><%= leave.leave_type %></p></td>
-                                    <td data-label="LeaveFrom"><p><%= leave.leave_from %></p></td>
-                                    <td data-label="LeaveTo"><p><%= leave.leave_to %></p></td>
-                                    <td data-label="Status"><p class="btn btn-warning btn-xs"><%= leave.status %></p></td>
-                                    <td data-label="Actions">
-                                     <%= link_to 'Edit', edit_admin_leafe_path(leave), class: "btn btn-success btn-xs" %>
-                                        <%= link_to 'Destroy', admin_leafe_path(leave), class: "btn btn-danger btn-xs", method: :delete, data: { confirm: 'Are you sure?' } %>
-                                    </td>
-                                </tr>
+                                    <tr>
+                                        <td data-label="SL"><%= leave.id %></td>
+                                        <td data-label="emoployeCode"><p><%= Employee.where(id: leave.employee_id)[0].first_name if leave.employee_id %></p></td>
+                                        <td data-label="leaveType"><p><%= leave.leave_type %></p></td>
+                                        <td data-label="LeaveFrom"><p><%= leave.leave_from %></p></td>
+                                        <td data-label="LeaveTo"><p><%= leave.leave_to %></p></td>
+                                        <td data-label="Status"><p class="btn btn-warning btn-xs"><%= leave.status %></p></td>
+                                        <td data-label="Actions">
+                                         <%= link_to 'Edit', edit_admin_leafe_path(leave), class: "btn btn-success btn-xs" %>
+                                            <%= link_to 'Destroy', admin_leafe_path(leave), class: "btn btn-danger btn-xs", method: :delete, data: { confirm: 'Are you sure?' } %>
+                                        </td>
+                                    </tr>
                                 <% end %>
                             </tbody>
                         </table>

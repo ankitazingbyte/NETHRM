@@ -29,5 +29,6 @@ Rails.application.routes.draw do
   		resources :holidays
 	 	get "home/index"
 	 	root "home#index"
+	 	get 'home/payroll_summery'
 	end
 end

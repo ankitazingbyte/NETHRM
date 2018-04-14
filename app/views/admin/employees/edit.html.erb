@@ -102,7 +102,7 @@
                                         <h3 class="panel-title"> Add Document</h3>
                                     </div>
                                     <div class="panel-body">
-                                        <%=  render "admin/documents/new", document: @document %>
+                                        <%#=  render "admin/documents/new", document: @document %>
                                     </div>
                                 </div>
                             </div>
@@ -121,15 +121,15 @@
                                             </tr>
                                             </thead>
                                             <tbody>
-                                                <% @documents.each do |document| %>
+                                                <%# @documents.each do |document| %>
                                                     <tr>
-                                                        <td data-label="Document Name"><%= document.name %></td>
+                                                        <td data-label="Document Name"><%#= document.name %></td>
                                                         <td class="text-right">
-                                                            <%= link_to document.attachment_url,class: "btn btn-success btn-xs" do %><i class="fa fa-download"></i> Download<% end %>
+                                                            <%#= link_to document.attachment_url,class: "btn btn-success btn-xs" do %><i class="fa fa-download"></i> Download<%# end %>
                                                            <%#= link_to admin_document,class: "btn btn-danger btn-xs", method: :delete, data: { confirm: 'Are you sure?' } do %><i class="fa fa-trash"></i> Delete<%# end %>
                                                         </td>
                                                     </tr>
-                                                <% end %>
+                                                <%# end %>
                                             </tbody>
                                         </table>
                                     </div>

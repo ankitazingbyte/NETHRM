@@ -1,4 +1,17 @@
 <%= form_for @ticket, url: admin_ticket_path do |form| %>
+  <% if @ticket.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@ticket.errors.count, "error") %> prohibited
+        this ticket from being saved:
+      </h2>
+      <ul>
+        <% @ticket.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
   <div class="form-group m-none">
       <label for="e20">Change Department</label>
       <%= form.select :department_id, Department.all.map{|d| [d.name, d.id]}, class: "form-control selectpicker" %>

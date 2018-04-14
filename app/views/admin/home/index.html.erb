@@ -11,7 +11,7 @@
                                 <div class="pull-right" style="font-size: 25px;">
                                     <span class="small">Employees</span>
                                     <br>
-                                    <%#= link_to "Add New", new_admin_employee_path, class: "btn btn-info btn-xs text-uppercase btn-new" %>
+                                    <%= link_to "Add New", new_admin_employee_path, class: "btn btn-info btn-xs text-uppercase btn-new" %>
                                 </div>
                             </div>
                         </div>
@@ -21,7 +21,7 @@
                                 <div class="pull-right" style="font-size: 15px;">
                                     <span class="small">Leave Application</span>
                                     <br>
-                                    <%#=link_to "View All", admin_leaves_path, class: "btn btn-success btn-xs text-uppercase btn-new" %>
+                                    <%=link_to "View All", admin_leaves_path, class: "btn btn-success btn-xs text-uppercase btn-new" %>
                                 </div>
                             </div>
                         </div>
@@ -31,7 +31,7 @@
                                 <div class="pull-right" style="font-size: 15px;">
                                     <span class="small">Expense Request</span>
                                     <br>
-                                   <%#=link_to "View All", admin_expenses_path, class: "btn btn-info btn-xs text-uppercase btn-new" %>
+                                   <%=link_to "View All", admin_expenses_path, class: "btn btn-info btn-xs text-uppercase btn-new" %>
                                 </div>
                             </div>
                         </div>
@@ -41,7 +41,7 @@
                                 <div class="pull-right" style="font-size: 15px;">
                                     <span class="small">Support Tickets</span>
                                     <br>
-                                    <%#=link_to "View All", admin_tickets_path, class: "btn btn-success btn-xs text-uppercase btn-new" %>
+                                    <%=link_to "View All", admin_tickets_path, class: "btn btn-success btn-xs text-uppercase btn-new" %>
                                 </div>
                             </div>
                         </div>
@@ -103,25 +103,25 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <%# @admin_leaves.each do |admin_leave| %>
+                                        <% @leaves.each do |leave| %>
                                             <tr>
                                                 <td data-label="SL">
                                                     <p>49</p>
                                                 </td>
                                                 <td data-label="employee">
-                                                    <p><%#= admin_leave.admin_employee_id %></a></p>
+                                                    <p><%= leave.employee_id %></a></p>
                                                 </td>
                                                 <td data-label="leave type">
-                                                    <p><%#= admin_leave.leave_type %></p>
+                                                    <p><%= leave.leave_type %></p>
                                                 </td>
                                                 <td data-label="leave from">
-                                                    <p><%#= admin_leave.leave_from %></p>
+                                                    <p><%= leave.leave_from %></p>
                                                 </td>
                                                 <td data-label="leave to">
-                                                    <p><%#= admin_leave.leave_to %></p>
+                                                    <p><%= leave.leave_to %></p>
                                                 </td>
                                             </tr>
-                                        <%# end %>
+                                        <% end %>
                                     </tbody>
                                 </table>
                             </div>
@@ -147,22 +147,22 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                        <%# @admin_expenses.each do |admin_expense| %>
+                                        <% @expenses.each do |expense| %>
                                         	<tr>
                                                 <td data-label="item name">
-                                                    <p><%#= admin_expense.item_name %></p>
+                                                    <p><%= expense.item_name %></p>
                                                 </td>
                                                 <td data-label="purchase by">
-                                                    <p><%#= admin_expense.purchase_from %></p>
+                                                    <p><%= expense.purchase_from %></p>
                                                 </td>
                                                 <td data-label="purchase date">
-                                                    <p><%#= admin_expense.purchase_date %></p>
+                                                    <p><%= expense.purchase_date %></p>
                                                 </td>
                                                 <td data-label="amount">
-                                                    <p><%#= admin_expense.amount %></p>
+                                                    <p><%= expense.amount %></p>
                                                 </td>
                                             </tr>
-                                        <%# end %>
+                                        <% end %>
                                     </tbody>
                                 </table>
                             </div>
@@ -192,19 +192,19 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                        <%# @admin_tasks.each do |admin_task| %>
+                                        <% @tasks.each do |task| %>
                                             <tr>
                                                 <td data-label="task">
-                                                    <p><%#= admin_task.title %></p>
+                                                    <p><%= task.title %></p>
                                                 </td>
-                                                <td data-label="CreatedDate"><p><%#= admin_task.start_date %></p>
+                                                <td data-label="CreatedDate"><p><%= task.start_date %></p>
                                                 </td>
-                                                <td data-label="DueDate"><p><%#= admin_task.due_date %></p></td>
+                                                <td data-label="DueDate"><p><%= task.due_date %></p></td>
                                                 </td>
-                                                <td data-label="DueDate"><p><%#= admin_task.status %></p></td>
+                                                <td data-label="DueDate"><p><%= task.status %></p></td>
                                                 </td>
                                             </tr>
-                                        <%# end %>
+                                        <% end %>
                                     </tbody>
                                 </table>
                             </div>
@@ -229,13 +229,13 @@
                                             </tr>
                                     </thead>
                                     <tbody>
-                                        <%# @admin_tickets.each do |admin_ticket| %>
+                                        <% @tickets.each do |ticket| %>
                                         <tr>
                                         <td>employee@coderpixel.com</td>
-                                        <td><%#= admin_ticket.subject %></td>
-                                        <td><%#= admin_ticket.created_at %></td>
+                                        <td><%= ticket.subject %></td>
+                                        <td><%= ticket.created_at %></td>
                                     </tr>
-                                        <%# end %>
+                                        <% end %>
                                     </tbody>
                                 </table>
                             </div>
