@@ -26,7 +26,9 @@ Rails.application.routes.draw do
   		resources :descussions
   		resources :tickets
   		resources :supports
-  		resources :holidays
+  		resources :holidays do
+    		get 'calendar_view' ,on: :collection
+  		end
 	 	get "home/index"
 	 	root "home#index"
 	 	get 'home/payroll_summery'

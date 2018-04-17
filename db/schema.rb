@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180413122945) do
+ActiveRecord::Schema.define(version: 20180416173330) do
 
   create_table "assesments", force: :cascade do |t|
     t.integer "department_id"
@@ -131,8 +131,8 @@ ActiveRecord::Schema.define(version: 20180413122945) do
   end
 
   create_table "holidays", force: :cascade do |t|
-    t.string "date"
-    t.string "occasion"
+    t.date "date"
+    t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

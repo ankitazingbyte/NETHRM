@@ -1,7 +1,7 @@
 class CreateHolidays < ActiveRecord::Migration[5.1]
   def change
     create_table :holidays do |t|
-      t.string :date
+      t.date :date
       t.string :occasion
 
       t.timestamps

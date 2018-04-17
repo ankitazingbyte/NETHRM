@@ -7,6 +7,11 @@ class Admin::HolidaysController < ApplicationController
     @holidays = Holiday.all
   end
 
+  def calendar_view
+    @holidays = Holiday.all
+    render json: @holidays
+  end
+
   # GET /holidays/1
   # GET /holidays/1.json
   def show
@@ -26,15 +31,11 @@ class Admin::HolidaysController < ApplicationController
   def create
     @holiday = Holiday.new(holiday_params)
 
-    respond_to do |format|
       if @holiday.save
-        format.html { redirect_to @holiday, notice: 'Holiday was successfully created.' }
-        format.json { render :show, status: :created, location: @holiday }
+         redirect_to action: "index", notice: 'Holiday was successfully created.'
       else
-        format.html { render :new }
-        format.json { render json: @holiday.errors, status: :unprocessable_entity }
+        render :new 
       end
-    end
   end
 
   # PATCH/PUT /holidays/1
