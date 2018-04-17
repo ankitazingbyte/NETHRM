@@ -24,12 +24,12 @@
 
     <div class="form-group">
         <label>Gift Item</label>
-        <%= form.text_field :gift_item, class: "form-control", onKeyPress: "return ValidateAlpha(event);" %>
+        <%= form.text_field :gift_item, class: "form-control", onKeyPress: "return ValidateAlpha(event);", required: true %>
     </div>
 
     <div class="form-group">
         <label>Cash Price</label>
-        <%= form.text_field :cash_price, class: "form-control" %>
+        <%= form.text_field :cash_price, class: "form-control", required: true %>
     </div>
 
     <div class="form-group m-none">
@@ -41,7 +41,8 @@
         <label>Year</label>
         <%= select_year(Date.today, {:start_year => DateTime.now.year, :end_year => DateTime.now.year - 117}, {:name => 'buddy[dob(1i)]', :id => 'buddy_dob_1i', :class => 'form-control'}) %>
     </div>
-    <%= form.submit "update", class: "btn btn-primary" %>
+    <%= form.submit "Submit", class: "btn btn-primary pull-right" %>
+    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 <% end %>
 
 <script type="text/javascript">

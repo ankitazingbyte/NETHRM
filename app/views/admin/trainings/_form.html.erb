@@ -1,76 +1,94 @@
-<%= form_for @training, :url => admin_trainings_path, do |form| %>
-  <% if training.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(training.errors.count, "error") %> prohibited this training from being saved:</h2>
-      <ul>
-      <% training.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+<%= form_for @training, :url => admin_trainings_path do |form| %>
+    <div class="modal-body">
+        <div class="form-group">
+            <label>Employee</label>
+            <%= form.select :employee_id, Employee.all.map{|e| [e.first_name, e.id]}, class: "btn dropdown-toggle btn-default" %>
+        </div>
+
+        <div class="form-group">
+            <label>Training Type</label>
+            <%= form.select :training_type, %w{Employees-development IT-Training Finance-training }, :prompt => 'Select', required: true, placeholder: 'Training Type', class: 'form-control' %>
+        </div>
+
+        <div class="form-group">
+            <label>Training Subject</label>
+            <%= form.select :training_subject, %w{online-training seminar workshop hand-on-training webnair }, :prompt => 'Select', required: true, placeholder: 'Training Type', class: 'form-control' %>
+        </div>
+
+        <div class="form-group">
+            <label>Nature Of Training</label>
+            <%= form.select :nature, %w{Internal External}, :prompt => 'Select', required: true, class: 'form-control' %>
+        </div>
+
+        <div class="form-group">
+            <label>Training Title</label>
+            <%= form.text_field :title, class: "form-control",onKeyPress: "return ValidateAlpha(event);", required: true %>
+        </div>
+
+        <div class="form-group">
+            <label>Trainer</label>
+            <%= form.select :trainer_id, Trainer.all.map{|e| [e.first_name, e.id]}, class: "btn dropdown-toggle btn-default", required: true  %>
+        </div>
+
+        <div class="form-group">
+            <label>Training Location</label>
+            <%= form.text_field :location, class: "form-control", required: true  %>
+        </div>
+
+        <div class="form-group">
+            <label>Sponsored By</label>
+            <%= form.text_field :sponsored_by, class: "form-control", required: true, onKeyPress: "return ValidateAlpha(event);"  %>
+        </div>
+
+        <div class="form-group">
+            <label>Organized By</label>
+            <%= form.text_field :organized_by, class: "form-control", required: true, onKeyPress: "return ValidateAlpha(event);"  %>        
+        </div>
+
+        <div class="form-group">
+            <label>Training From</label>
+            <%= form.text_field :training_from, class: "form-control", "data-provide" => 'datepicker', required: true  %>
+        </div>
+
+        <div class="form-group">
+            <label>Training To</label>
+            <%= form.text_field :training_to, class: "form-control", "data-provide" => 'datepicker', required: true  %>
+        </div>
+
+        <div class="form-group">
+            <label>Training Description</label>
+            <%= form.cktext_area :description, class: "form-control", required: true  %>
+        </div>
     </div>
-  <% end %>
-
-  <div class="field">
-    <label>Employee</label>
-    <%= form.select :employee_id, Employee.all.map{|e| [e.first_name, e.id]}, class: "btn dropdown-toggle btn-default" %>
-  </div>
-
-  <div class="field">
-    <label>Training Type</label>
-    <%= form.select :training_type, %w{Online Seminar Workshop}, :prompt => 'Select', required: true, class: 'form-control' %>
-  </div>
-
-  <div class="field">
-    <label>Training Subject</label>
-    <%= form.select :training_subject, %w{Employee-Development IT-Training Finance-Training}, :prompt => 'Select', required: true, class: 'form-control' %>
-  </div>
-
-  <div class="field">
-    <label>Nature Of Training</label>
-    <%= form.select :nature, %w{Internal External}, :prompt => 'Select', required: true, class: 'form-control' %>
-  </div>
-
-  <div class="field">
-    <label>Training Title</label>
-    <%= form.text_field :title, class: "form-control" %>
-  </div>
-
-  <div class="field">
-    <label>Trainer</label>
-    <%= form.select :trainer_id, Trainer.all.map{|e| [e.first_name, e.id]}, class: "btn dropdown-toggle btn-default" %>
-  </div><br>
-
-  <div class="field">
-    <label>Training Location</label>
-    <%= form.text_field :location, class: "form-control" %>
-  </div>
-
-  <div class="field">
-    <label>Sponsored By</label>
-    <%= form.text_field :sponsored_by, class: "form-control" %>
-  </div>
-
-  <div class="field">
-    <label>Organized By</label>
-    <%= form.text_field :organized_by, class: "form-control" %>
-  </div>
-
-  <div class="field">
-    <label>Training From</label>
-    <%= form.text_field :training_from, class: "form-control", "data-provide" => 'datepicker' %>
-  </div>
-
-  <div class="field">
-    <label>Training To</label>
-    <%= form.text_field :training_to, class: "form-control", "data-provide" => 'datepicker' %>
-  </div>
-
-  <div class="field">
-      <label>Training Description</label>
-      <%= form.cktext_area :description, class: "form-control" %>
-  </div>
-
-  <div class="field">
-    <%= form.submit "update", class: "btn btn-primary" %>
-  </div>
+    <div class="modal-footer">
+        <input type="hidden" name="_token" value="iDagcZBRhIoGlecLnwH8hlhihh6XILWCmZWpbR5i">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <%= form.submit "Add", class: "btn btn-primary" %>
+    </div>
 <% end %>
+<!-- For Alphabates Only -->
+<script type="text/javascript">
+    function isNumberKey(evt){  <!--Function to accept only numeric values-->
+    //var e = evt || window.event;
+    var charCode = (evt.which) ? evt.which : evt.keyCode
+    if (charCode != 46 && charCode > 31 
+    && (charCode < 48 || charCode > 57))
+        return false;
+        return true;
+    }
+           
+    function ValidateAlpha(evt)
+    {
+        var keyCode = (evt.which) ? evt.which : evt.keyCode
+        if ((keyCode < 65 || keyCode > 90) && (keyCode < 97 || keyCode > 123) && keyCode != 32)
+         
+        return false;
+            return true;
+    }
+</script>
+<!-- NUMERIC filed E not allow  -->
+<script>
+    $("input[type='number']").on('keydown',function(e){
+        return e.keyCode == 69 ? false : true
+    })
+</script>

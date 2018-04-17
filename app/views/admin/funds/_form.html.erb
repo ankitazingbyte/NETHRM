@@ -1,4 +1,4 @@
-<%= form_for @fund, :url => admin_fund_path do |form| %>
+<%= form_for @fund, :url => admin_funds_path do |form| %>
   <% if @fund.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(fund.errors.count, "error") %> prohibited this fund from being saved:</h2>
@@ -24,27 +24,25 @@
   <div class="show-fixed-amount">
     <div class="form-group">
       <label for="Employee Share">Employee Share</label>
-      <%= form.text_field :employee_share, class: "form-control" %>
+      <%= form.number_field :employee_share, class: "form-control", required: true %>
     </div>
     <div class="form-group">
       <label for="Organization Share">Organization Share</label>
-      <%= form.text_field :organization_share, class: "form-control" %>
+      <%= form.number_field :organization_share, class: "form-control", required: true %>
     </div>
   </div>
 
   <div class="form-group">
       <label for="fname">status</label>
-       <%= form.text_field :status, class: "form-control" %>
+       <%= form.text_field :status, class: "form-control", required: true %>
   </div>
 
   <div class="form-group">
     <label>Description</label>
-    <%= form.cktext_area :description, class: "form-control" %>
+    <%= form.cktext_area :description, class: "form-control", required: true %>
   </div>
-
-  <div class="actions">
-    <%= form.submit "Update", class: "btn btn-success btn-sm pull-right" %>
-  </div>
+  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    <%= form.submit "ADD", class: "btn btn-success btn-sm pull-right" %> 
 <% end %>
  
 

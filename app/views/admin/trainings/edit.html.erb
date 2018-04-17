@@ -1,22 +1,96 @@
 <section class="wrapper-bottom-sec">
-    <div class="p-30">
-        <h2 class="page-title">VIEW EMPLOYEE TRAINING</h2>
-    </div>
-    <div class="p-30 p-t-none p-b-none">
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="panel">
-                    <div class="panel-heading">
-                        <h3 class="panel-title"> VIEW EMPLOYEE TRAINING</h3>
-                    </div>
-                    <div class="panel-body">
-						<%= render 'form', training: @training %>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+  <div class="p-30">
+      <h2 class="page-title">EDIT EMPLOYEE TRAINING</h2>
+  </div>
+  <div class="p-30 p-t-none p-b-none">
+      <div class="row">
+          <div class="col-lg-6">
+              <div class="panel panel-info">
+                  <div class="panel-heading">
+                      <h3 class="panel-title"> EDIT EMPLOYEE TRAINING</h3>
+                  </div>
+                  <div class="panel-body">
+					          <%= form_for @training, :url => admin_training_path do |form| %>
+                          <% if @training.errors.any? %>
+                              <div id="error_explanation">
+                                <h2><%= pluralize(training.errors.count, "error") %> prohibited this training from being saved:</h2>
+                                <ul>
+                                <% training.errors.full_messages.each do |message| %>
+                                  <li><%= message %></li>
+                                <% end %>
+                                </ul>
+                              </div>
+                          <% end %>
+                        <div class="field">
+                          <label>Employee</label>
+                          <%= form.select :employee_id, Employee.all.map{|e| [e.first_name, e.id]}, class: "btn dropdown-toggle btn-default", required: true %>
+                        </div>
+
+                        <div class="field">
+                          <label>Training Type</label>
+                          <%= form.select :training_type, %w{Online Seminar Workshop}, :prompt => 'Select', required: true, class: 'form-control' %>
+                        </div>
+
+                        <div class="field">
+                          <label>Training Subject</label>
+                          <%= form.select :training_subject, %w{Employee-Development IT-Training Finance-Training}, :prompt => 'Select', required: true, class: 'form-control' %>
+                        </div>
+
+                        <div class="field">
+                          <label>Nature Of Training</label>
+                          <%= form.select :nature, %w{Internal External}, :prompt => 'Select', required: true, class: 'form-control' %>
+                        </div>
+
+                        <div class="field">
+                          <label>Training Title</label>
+                          <%= form.text_field :title, class: "form-control",required: true, onKeyPress: "return ValidateAlpha(event);" %>
+                        </div>
+
+                        <div class="field">
+                          <label>Trainer</label>
+                          <%= form.select :trainer_id, Trainer.all.map{|e| [e.first_name, e.id]}, class: "btn dropdown-toggle btn-default",required: true %>
+                        </div><br>
+
+                        <div class="field">
+                          <label>Training Location</label>
+                          <%= form.text_field :location, class: "form-control", required: true %>
+                        </div>
+
+                        <div class="field">
+                          <label>Sponsored By</label>
+                          <%= form.text_field :sponsored_by, class: "form-control", required: true , onKeyPress: "return ValidateAlpha(event);" %>
+                        </div>
+
+                        <div class="field">
+                          <label>Organized By</label>
+                          <%= form.text_field :organized_by, class: "form-control", required: true, onKeyPress: "return ValidateAlpha(event);" %>
+                        </div>
+
+                        <div class="field">
+                          <label>Training From</label>
+                          <%= form.text_field :training_from, class: "form-control", "data-provide" => 'datepicker', required: true %>
+                        </div>
+
+                        <div class="field">
+                          <label>Training To</label>
+                          <%= form.text_field :training_to, class: "form-control", "data-provide" => 'datepicker', required: true %>
+                        </div>
+
+                        <div class="field">
+                            <label>Training Description</label>
+                            <%= form.cktext_area :description, class: "form-control", required: true %>
+                        </div>
+
+                        <div class="field">
+                          <%= form.submit "update", class: "btn btn-primary" %>
+                        </div>
+                    <% end %>
+				         </div>
+			        </div>
+		      </div>
+	    </div>
+  </div>
 </section>
 
-<%= link_to 'Show', @training %> |
+<%= link_to 'Show', admin_training_path(@training) %> |
 <%= link_to 'Back', admin_trainings_path %>

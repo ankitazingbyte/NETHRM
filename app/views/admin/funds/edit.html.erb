@@ -5,12 +5,58 @@
 	<div class="p-30 p-t-none p-b-none">
         <div class="row">
             <div class="col-lg-6">
-                <div class="panel">
+                <div class="panel panel-info">
                     <div class="panel-heading">
                         <h3 class="panel-title"> Edit Provident Fund</h3>
                     </div>
                     <div class="panel-body">
-						<%= render 'form', fund: @fund %>
+						<%= form_for @fund, :url => admin_fund_path do |form| %>
+						  	<% if @fund.errors.any? %>
+							    <div id="error_explanation">
+							      <h2><%= pluralize(fund.errors.count, "error") %> prohibited this fund from being saved:</h2>
+							      <ul>
+							        <% fund.errors.full_messages.each do |message| %>
+							            <li><%= message %></li>
+							        <% end %>
+							      </ul>
+							    </div>
+							<% end %>
+
+						  	<div class="form-group">
+						    	<label>Employee Name</label>
+						    	<%#= form.select :employee_id, Employee.all.map{|e| [e.user_name, e.id]}, class: "btn dropdown-toggle btn-default" %>
+						  	</div>
+
+						  	<div class="form-group m-none">
+						    	<label for="e20">Provident Fund Type</label>
+						    	<%= form.select :fund_type, %w{Fix-Amount percentage-of-Basic-Salary}, :prompt => 'Select', required: true, placeholder: 'fund_type', class: 'form-control' %>
+						  	</div>
+
+						  	<div class="show-fixed-amount">
+						    	<div class="form-group">
+						      		<label for="Employee Share">Employee Share</label>
+						      		<%= form.number_field :employee_share, class: "form-control", required: true %>
+						    	</div>
+						    	<div class="form-group">
+						      		<label for="Organization Share">Organization Share</label>
+						      		<%= form.number_field :organization_share, class: "form-control", required: true %>
+						    	</div>
+						  	</div>
+
+						  	<div class="form-group">
+						      	<label for="fname">status</label>
+						       	<%= form.text_field :status, class: "form-control", required: true %>
+						  	</div>
+
+							<div class="form-group">
+							    <label>Description</label>
+							    <%= form.cktext_area :description, class: "form-control", required: true %>
+							</div>
+
+							<div class="actions">
+							    <%= form.submit "Update", class: "btn btn-success btn-sm pull-right" %>
+							</div>
+						<% end %>
 					</div>
 				</div>
 			</div>

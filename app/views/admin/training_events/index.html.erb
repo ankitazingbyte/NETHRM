@@ -5,7 +5,7 @@
     <div class="p-30 p-t-none p-b-none">
         <div class="row">
             <div class="col-lg-12">
-                <div class="panel">
+                <div class="panel panel-info">
                     <div class="panel-heading">
                         <h3 class="panel-title">Training Events</h3>
                         <button class="btn btn-success btn-sm pull-right" data-toggle="modal" data-target="#add-new-event"><i class="fa fa-plus"></i> Add New Event</button>
@@ -28,7 +28,7 @@
                                 <% @training_events.each do |training_event| %>
                                     <tr>
                                         <td data-label="Training Type"><p><%= training_event.training_type %></p></td>
-                                        <td data-label="Training Subject"><p><%= admin_training_event.subject %></p></td>
+                                        <td data-label="Training Subject"><p><%= training_event.subject %></p></td>
                                         <td data-label="Title"><p><%= training_event.title %></p></td>
                                         <td data-label="Training From"><p><%= training_event.training_from %></p></td>
                                         <td data-label="Training To"><p><%= training_event.training_to %></p></td>
@@ -37,7 +37,7 @@
                                         </td>
                                         <td data-label="Actions" class="text-right">
                                             <%= link_to edit_admin_training_event_path(training_event), class: "btn btn-success btn-xs" do %><i class="fa fa-edit"></i> Edit<% end %>
-                                            <%= link_to training_event, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs" do %><i class="fa fa-trash"></i> Delete <% end %>
+                                            <%= link_to admin_training_event_path(training_event), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs" do %><i class="fa fa-trash"></i> Delete <% end %>
                                         </td>
                                     </tr>
                                 <% end %>
@@ -55,7 +55,7 @@
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         <h4 class="modal-title" id="myModalLabel">Add New Event</h4>
                     </div>
-                    <%= render "admin/training_events/new" %>
+                    <%= render "admin/training_events/form" %>
                 </div>
             </div>
         </div>

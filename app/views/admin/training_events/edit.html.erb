@@ -5,12 +5,88 @@
     <div class="p-30 p-t-none p-b-none">
         <div class="row">
             <div class="col-lg-6">
-                <div class="panel">
+                <div class="panel panel-info">
                     <div class="panel-heading">
                         <h3 class="panel-title"> VIEW EMPLOYEE TRAINING</h3>
                     </div>
                     <div class="panel-body">
-						<%= render 'form', training_event: @training_event %>
+						<%= form_for @training_event, :url => admin_training_event_path do |form| %>
+                            <% if @training_event.errors.any? %>
+                                <div id="error_explanation">
+                                  <h2><%= pluralize(training_event.errors.count, "error") %> prohibited this training_event from being saved:</h2>
+
+                                  <ul>
+                                  <% training_event.errors.full_messages.each do |message| %>
+                                    <li><%= message %></li>
+                                  <% end %>
+                                  </ul>
+                                </div>
+                            <% end %>
+
+                            <div class="field">
+                                <%= form.label :training_type %>
+                                <%= form.select :training_type, %w{Online Seminar Workshop}, :prompt => 'Select', required: true, class: 'form-control' %>
+                            </div>
+
+                            <div class="field">
+                                <%= form.label :subject %>
+                                <%= form.select :subject, %w{Employee-Development IT-Training Finance-Training}, :prompt => 'Select', required: true, class: 'form-control' %>
+                            </div>
+
+                            <div class="field">
+                                <%= form.label :nature_of_training %>
+                                <%= form.select :nature_of_training, %w{Internal External}, :prompt => 'Select', required: true, class: 'form-control' %>
+                            </div>
+
+                            <div class="field">
+                                <%= form.label :title %>
+                                <%= form.text_field :title, class: "form-control", required: true %>
+                            </div>
+
+                            <div class="field">
+                                <%= form.label :location %>
+                                <%= form.text_field :location, class: "form-control", required: true %>
+                            </div>
+
+                            <div class="field">
+                                <%= form.label :sponsored_by %>
+                                <%= form.text_field :sponsored_by, class: "form-control",required: true %>
+                            </div>
+
+                            <div class="field">
+                                <%= form.label :organized_by %>
+                                <%= form.text_field :organized_by, class: "form-control", required: true %>
+                            </div>
+
+                            <div class="field">
+                                <%= form.label :training_from %>
+                                <%= form.text_field :training_from, class: "form-control", "data-provide" => 'datepicker', required: true %>
+                            </div>
+
+                            <div class="field">
+                                <%= form.label :training_to %>
+                                <%= form.text_field :training_to, class: "form-control", "data-provide" => 'datepicker', required: true %>
+                            </div>
+
+                            <div class="field">
+                                <%= form.label :employee_id %>
+                                <%= form.select :employee_id, Employee.all.map{|e| [e.first_name, e.id]}, class: "btn dropdown-toggle btn-default", required: true %>
+                            </div>
+
+                            <div class="field">
+                                <%= form.label :trainer_id %>
+                                <%= form.select :trainer_id, Trainer.all.map{|e| [e.first_name, e.id]}, class: "btn dropdown-toggle btn-default", required: true %>
+                            </div>
+
+                            <div class="field">
+                                <%= form.label :status %>
+                                <%= form.select :status, %w{completed Upcoming}, :prompt => 'Select', required: true, class: 'form-control', required: true %>
+                            </div><br>
+
+                            <div class="field">
+                                <%= form.submit "Update", class: "btn btn-primary"%>
+                            </div>
+                        <% end %>
 					</div>
 				</div>
 			</div>
@@ -18,5 +94,31 @@
 	</div>
 </section>
 
-<%= link_to 'Show', @training_event %> |
+<%= link_to 'Show', admin_training_event_path(@training_event) %> |
 <%= link_to 'Back', admin_training_events_path %>
+<!-- For Alphabates Only -->
+<script type="text/javascript">
+    function isNumberKey(evt){  <!--Function to accept only numeric values-->
+    //var e = evt || window.event;
+    var charCode = (evt.which) ? evt.which : evt.keyCode
+    if (charCode != 46 && charCode > 31 
+    && (charCode < 48 || charCode > 57))
+        return false;
+        return true;
+    }
+           
+    function ValidateAlpha(evt)
+    {
+        var keyCode = (evt.which) ? evt.which : evt.keyCode
+        if ((keyCode < 65 || keyCode > 90) && (keyCode < 97 || keyCode > 123) && keyCode != 32)
+         
+        return false;
+            return true;
+    }
+</script>
+<!-- NUMERIC filed E not allow  -->
+<script>
+    $("input[type='number']").on('keydown',function(e){
+        return e.keyCode == 69 ? false : true
+    })
+</script>

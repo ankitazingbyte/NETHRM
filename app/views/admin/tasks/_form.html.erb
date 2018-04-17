@@ -1,5 +1,4 @@
 <%= form_for @task, :url => admin_tasks_path do |form| %>
-  
   <% if @task.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(task.errors.count, "error") %> prohibited this task from being saved:</h2>
@@ -14,45 +13,67 @@
   <div class="modal-body">
       <div class="form-group">
           <label>Task Title</label>
-          <%= form.text_field :title, class: "form-control" %>
+          <%= form.text_field :title, class: "form-control", required: true, onKeyPress: "return ValidateAlpha(event);" %>
       </div>
 
       <div class="form-group">
           <label>Assign To</label>
-          <%= form.select :employee_id, Employee.all.map{|e| [e.user_name, e.id]}, class: "btn dropdown-toggle btn-default" %>
+          <%= form.select :employee_id, Employee.all.map{|e| [e.user_name, e.id]}, class: "btn dropdown-toggle btn-default", required: true %>
       </div>
 
       <div class="form-group">
           <label>Start Date</label>
-          <%= form.text_field :start_date, class: "form-control", "data-provide" => 'datepicker' %>
+          <%= form.text_field :start_date, class: "form-control", "data-provide" => 'datepicker', required: true %>
       </div>
 
       <div class="form-group">
           <label>Due Date</label>
-          <%= form.text_field :due_date, class: "form-control", "data-provide" => 'datepicker' %>
+          <%= form.text_field :due_date, class: "form-control", "data-provide" => 'datepicker', required: true %>
       </div>
 
       <div class="form-group">
           <label>Estimated Hour</label>
-          <%= form.text_field :estimated_hour, class: "form-control" %>
+          <%= form.number_field :estimated_hour, class: "form-control", required: true %>
       </div>
 
       <div class="form-group">
           <label>Progress</label>
-          <%= form.text_field :progress, class: "form-control" %>
+          <%= form.text_field :progress, class: "form-control", required: true %>
       </div>
 
       <div class="form-group m-none">
           <label for="e20">Status</label>
-          <%= form.select :status, %w{Pending Started Complete}, :prompt => 'Select', required: true, class: 'form-control' %>
+          <%= form.select :status, %w{Pending Started Complete}, :prompt => 'Select', required: true, class: 'form-control', required: true %>
       </div>
 
       <div class="form-group">
           <label>Description</label>
-          <%= form.cktext_area :description, class: "form-control" %>
+          <%= form.cktext_area :description, class: "form-control", required: true %>
       </div>
   </div>
   <div class="modal-footer">
-      <%= form.submit "Update", class: "btn btn-primary" %>
+      <input type="hidden" name="_token" value="iDagcZBRhIoGlecLnwH8hlhihh6XILWCmZWpbR5i">
+      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      <%= form.submit "Add", class: "btn btn-primary" %>
   </div>
 <% end %>
+<!-- For Alphabates Only -->
+<script type="text/javascript">
+    function isNumberKey(evt){  <!--Function to accept only numeric values-->
+    //var e = evt || window.event;
+    var charCode = (evt.which) ? evt.which : evt.keyCode
+    if (charCode != 46 && charCode > 31 
+    && (charCode < 48 || charCode > 57))
+        return false;
+        return true;
+    }
+           
+    function ValidateAlpha(evt)
+    {
+        var keyCode = (evt.which) ? evt.which : evt.keyCode
+        if ((keyCode < 65 || keyCode > 90) && (keyCode < 97 || keyCode > 123) && keyCode != 32)
+         
+        return false;
+            return true;
+    }
+</script>

@@ -5,7 +5,7 @@
         <div class="p-30 p-t-none p-b-none">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="panel">
+                    <div class="panel panel-info">
                         <div class="panel-heading">
                             <h3 class="panel-title">Loan</h3>
                             <button class="btn btn-success btn-sm pull-right" data-toggle="modal" data-target="#add-load"><i class="fa fa-plus"></i> Add Loan</button>
@@ -32,8 +32,8 @@
                                             <td data-label="Employee Name"><%= loan.employee_id %><%= Employee.where(id: loan.employee_id)[0].first_name if loan.employee_id %></td>
                                             <td data-label="Loan Date"><p><%= loan.loan_date %></p></td>
                                             <td data-label="Repayment Start Date"><%= loan.repayment_start_date %></td>
-                                            <td data-label="Amount">$ 50000.00</td>
-                                            <td data-label="Remaining Amount">$ 41800.00</td>
+                                            <td data-label="Amount">$ <%= loan.loan_amount %></td>
+                                            <td data-label="Remaining Amount">$ <%= loan.monthly_payement %></td>
                                             <td data-label="Status"><p class="btn btn-success btn-xs"><%= loan.status %> </p></td>
                                             <td data-label="Actions">
                                                 <%= link_to edit_admin_loan_path(loan), class: "btn btn-success btn-xs" do %><i class="fa fa-edit"></i> Edit<% end %>
@@ -55,7 +55,7 @@
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                             <h4 class="modal-title" id="myModalLabel">Add Loan</h4>
                         </div>
-                        <%= render "admin/loans/new" %>
+                        <%= render "admin/loans/form" %>
                     </div>
                 </div>
             </div>

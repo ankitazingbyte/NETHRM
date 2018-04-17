@@ -31,7 +31,7 @@ class Admin::TrainersController < ApplicationController
         redirect_to action: "index", notice: 'Trainer was successfully created.' 
       else
         render :new 
-    end
+      end
   end
 
   # PATCH/PUT /trainers/1
@@ -41,7 +41,7 @@ class Admin::TrainersController < ApplicationController
         redirect_to action: "index", notice: 'Trainer was successfully updated.' 
       else
         render :edit 
-    end
+      end
   end
 
   # DELETE /trainers/1

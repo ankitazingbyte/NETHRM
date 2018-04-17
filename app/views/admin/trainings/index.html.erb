@@ -5,7 +5,7 @@
     <div class="p-30 p-t-none p-b-none">
         <div class="row">
             <div class="col-lg-12">
-                <div class="panel">
+                <div class="panel panel-info">
                     <div class="panel-heading">
                         <h3 class="panel-title">Employee Training</h3>
                         <button class="btn btn-success btn-sm pull-right" data-toggle="modal" data-target="#add-new-training"><i class="fa fa-plus"></i> Add New Training</button>
@@ -33,7 +33,7 @@
                                         <td data-label="Training To"><p><%= training.training_to %></p></td>
                                         <td data-label="Actions" class="text-right">
                                         <%= link_to edit_admin_training_path(training), class: "btn btn-success btn-xs"  do %><i class="fa fa-edit"></i> Edit <% end %>
-                                        <%#= link_to training ,class: "btn btn-danger btn-xs", method: :delete, data: { confirm: 'Are you sure?' } do%><i class="fa fa-trash"></i> Delete<%# end %>
+                                        <%= link_to admin_training_path(training) ,class: "btn btn-danger btn-xs", method: :delete, data: { confirm: 'Are you sure?' } do%><i class="fa fa-trash"></i> Delete<% end %>
                                         </td>
                                     </tr>
                                 <% end %>
@@ -52,7 +52,7 @@
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         <h4 class="modal-title" id="myModalLabel">Add New Training</h4>
                     </div>
-                    <%= render "admin/trainings/new" %>
+                    <%= render "admin/trainings/form" %>
                 </div>
             </div>
         </div>

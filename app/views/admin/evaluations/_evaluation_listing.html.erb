@@ -6,7 +6,7 @@
   <div class="p-30 p-t-none p-b-none">
     <div class="row">
       <div class="col-lg-4">
-          <div class="panel">
+          <div class="panel panel-info">
             <div class="panel-heading">
               <h3 class="panel-title"> Training Evaluations</h3>
             </div>
@@ -16,7 +16,7 @@
           </div>
       </div>
           <div class="col-lg-8">
-              <div class="panel">
+              <div class="panel panel-info">
                   <div class="panel-heading">
                       <h3 class="panel-title">Training Evaluations</h3>
                   </div>
@@ -35,7 +35,7 @@
                               <td data-label="SL">1</td>
                               <td data-label="Title"><p><%= evaluation.title %></p></td>
                               <td>
-                                  <%= link_to 'EDIT', edit_admin_evaluation_path(evaluation), class: "btn btn-success btn-xs bottom", remote: true %>
+                                  <%= link_to 'EDIT', edit_admin_evaluation_path(evaluation), class: "btn btn-success bottom", remote: true %>
                                   <%= link_to admin_evaluation_path(evaluation), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs" do %><i class="fa fa-trash"></i>Delete <% end %>
                               </td>
                             </tr>

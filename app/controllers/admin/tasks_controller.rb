@@ -12,7 +12,7 @@ class Admin::TasksController < ApplicationController
   # GET /tasks/1.json
   def show
     @descussion = Descussion.new
-    @descussion = Descussion.all
+    @descussions = Descussion.all
   end
 
   # GET /tasks/new

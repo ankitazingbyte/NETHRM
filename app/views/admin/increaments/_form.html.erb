@@ -1,37 +1,41 @@
-<%= form_for @increament, :url => admin_increament_path do |form| %>
-  <% if @increament.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(increament.errors.count, "error") %> prohibited this increament from being saved:</h2>
+<%= form_for @increament, :url => admin_increaments_path do |form| %>
+    <% if @increament.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(increament.errors.count, "error") %> prohibited this admin_increament from being saved:</h2>
 
-      <ul>
-      <% increament.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+          <ul>
+          <% increament.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+    <% end %>
 
-  <div class="field">
-    <%= form.label :employee_id %>
-    <%#= form.select :employee_id, Employee.all.map{|e| [e.user_name, e.id]}, class: "btn dropdown-toggle btn-default" %>
-  </div>
+        <div class="form-group">
+            <label>Employee</label>
+            <%#= form.select :employee_id, Employee.all.map{|d| [d.first_name, d.id]}, class: "form-control selectpicker" %>
+        </div>
 
-  <div class="field">
-    <%= form.label :designation_id %>
-    <%= form.select :designation_id, Designation.all.map{|d| [d.name, d.id]}, class: "btn dropdown-toggle btn-default" %>
-  </div>
+        <div class="form-group">
+            <label>Designaion</label>
+            <%= form.select :designation_id, Designation.all.map{|d| [d.name, d.id]}, class: "form-control selectpicker", required: true %>
+        </div>
 
-  <div class="field">
-    <%= form.label :current_salary %>
-    <%= form.text_field :current_salary, class: "form-control" %>
-  </div>
+        <div class="form-group">
+            <label>Current Salary</label>
+            <%= form.number_field :current_salary, class: "form-control", required: true %>
+        </div>
 
-  <div class="field">
-    <%= form.label :increament_salary %>
-    <%= form.text_field :increament_salary, class: "form-control" %>
-  </div>
+        <div class="form-group">
+            <label>Increament Salary</label>
+            <%= form.number_field :increament_salary, class: "form-control", required: true %>
+        </div>
 
-  <div class="actions">
-    <%= form.submit "Update", class: "btn btn-success btn-sm pull-right" %>
-  </div>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <%= form.submit "Add", class: "btn btn-primary" %>
 <% end %>
+<script type="text/javascript">
+    $("input[type='number']").on('keydown',function(e){
+        return e.keyCode == 69 ? false : true
+    })
+</script>

@@ -5,7 +5,7 @@
   <div class="p-30 p-t-none p-b-none">
       <div class="row">
           <div class="col-lg-7">
-              <div class="panel">
+              <div class="panel panel-info">
                   <div class="panel-heading">
                       <h3 class="panel-title">Create New Ticket</h3>
                   </div>
@@ -31,7 +31,7 @@
                       
                       <div class="form-group">
                           <label for="subject">Subject</label>
-                          <%= form.text_field :subject, class: "form-control" %>
+                          <%= form.text_field :subject, class: "form-control",required: true, onKeyPress: "return ValidateAlpha(event);"%>
                       </div>
 
                       <div class="form-group">
@@ -51,7 +51,26 @@
       </div>
   </div>
 </section>
-
+<!-- For Alphabates Only -->
+<script type="text/javascript">
+    function isNumberKey(evt){  <!--Function to accept only numeric values-->
+    //var e = evt || window.event;
+    var charCode = (evt.which) ? evt.which : evt.keyCode
+    if (charCode != 46 && charCode > 31 
+    && (charCode < 48 || charCode > 57))
+        return false;
+        return true;
+    }
+           
+    function ValidateAlpha(evt)
+    {
+        var keyCode = (evt.which) ? evt.which : evt.keyCode
+        if ((keyCode < 65 || keyCode > 90) && (keyCode < 97 || keyCode > 123) && keyCode != 32)
+         
+        return false;
+            return true;
+    }
+</script>
 
 
                                 

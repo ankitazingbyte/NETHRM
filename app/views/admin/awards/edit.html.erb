@@ -5,19 +5,80 @@
     <div class="p-30 p-t-none p-b-none">
         <div class="row">
             <div class="col-lg-6">
-                <div class="panel">
+                <div class="panel panel-info">
                     <div class="panel-heading">
                         <h3 class="panel-title"> Edit Award</h3>
                     </div>
                     <div class="panel-body">
-						<%= render 'form', award: @award %>
+						<%= form_for @award, :url => admin_award_path do |form| %>
+                            <% if @award.errors.any? %>
+                                <div id="error_explanation">
+                                  <h2>
+                                    <%= pluralize(@award.errors.count, "error") %> prohibited
+                                    this award from being saved:
+                                  </h2>
+                                  <ul>
+                                    <% @award.errors.full_messages.each do |msg| %>
+                                      <li><%= msg %></li>
+                                    <% end %>
+                                  </ul>
+                                </div>
+                            <% end %>
+                            <div class="form-group">
+                                <label>Award Name</label>
+                                <%= form.select :name, %w{Best-Employee Employee-Of-The-Year Employee-Of-The-Month}, :prompt => 'Select', required: true, placeholder: 'Job Type', class: 'form-control' %>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Employee Name</label>
+                                <%#= form.select :employee_id, Employee.all.map{|d| [d.first_name, d.id]}, class: "form-control selectpicker" %>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Gift Item</label>
+                                <%= form.text_field :gift_item, class: "form-control", onKeyPress: "return ValidateAlpha(event);", required: true %>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Cash Price</label>
+                                <%= form.text_field :cash_price, class: "form-control", required: true %>
+                            </div>
+
+                            <div class="form-group m-none">
+                                <label for="e20">Month</label>
+                                <%= select_month(Date.today) %>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Year</label>
+                                <%= select_year(Date.today, {:start_year => DateTime.now.year, :end_year => DateTime.now.year - 117}, {:name => 'buddy[dob(1i)]', :id => 'buddy_dob_1i', :class => 'form-control'}) %>
+                            </div>
+                            <%= form.submit "Update", class: "btn btn-primary" %>
+                        <% end %>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 </section>
-
-
+<script type="text/javascript">
+    function isNumberKey(evt){  <!--Function to accept only numeric values-->
+    //var e = evt || window.event;
+    var charCode = (evt.which) ? evt.which : evt.keyCode
+    if (charCode != 46 && charCode > 31 
+    && (charCode < 48 || charCode > 57))
+        return false;
+        return true;
+    }
+           
+    function ValidateAlpha(evt)
+    {
+        var keyCode = (evt.which) ? evt.which : evt.keyCode
+        if ((keyCode < 65 || keyCode > 90) && (keyCode < 97 || keyCode > 123) && keyCode != 32)
+         
+        return false;
+            return true;
+    }
+</script>
 <%= link_to 'Show', admin_award_path(@award) %> |
 <%= link_to 'Back', admin_awards_path %>

@@ -5,12 +5,60 @@
     <div class="p-30 p-t-none p-b-none">
         <div class="row">
             <div class="col-lg-6">
-                <div class="panel">
+                <div class="panel panel-info">
                     <div class="panel-heading">
                         <h3 class="panel-title"> Edit Notice</h3>
                     </div>
                     <div class="panel-body">
-						<%= render 'form', notice: @notice %>
+						<%= form_for @notice, :url => admin_notice_path do |form| %>
+                            <% if @notice.errors.any? %>
+                                <div id="error_explanation">
+                                  <h2>
+                                    <%= pluralize(@notice.errors.count, "error") %> prohibited
+                                    this notice from being saved:
+                                  </h2>
+                                  <ul>
+                                    <% @notice.errors.full_messages.each do |msg| %>
+                                      <li><%= msg %></li>
+                                    <% end %>
+                                  </ul>
+                                </div>
+                            <% end %>
+                            <div class="form-group">
+                                <label>Notice Title</label>
+                                <%= form.text_field :title, class: "form-control", onKeyPress: "return ValidateAlpha(event);", required: true %> 
+                            </div>
+                            <div class="form-group m-none">
+                                <label for="e20">Notice Status</label>
+                                <%= form.select :status, %w{Published Unpublished}, :prompt => 'Select', required: true, class: 'form-control' %>
+                            </div>
+                            <div class="form-group">
+                                <label>Description</label>
+                                <%= form.text_area :description, class: "form-control ckeditor", required: true %>
+                            </div>
+                            <div class="form-group">
+                                <%= form.submit "Update", class: "btn btn-primary" %>
+                            </div>
+                        <% end %>
+                        <script type="text/javascript">
+                            function isNumberKey(evt){  <!--Function to accept only numeric values-->
+                            //var e = evt || window.event;
+                            var charCode = (evt.which) ? evt.which : evt.keyCode
+                            if (charCode != 46 && charCode > 31 
+                            && (charCode < 48 || charCode > 57))
+                                return false;
+                                return true;
+                            }
+                                   
+                            function ValidateAlpha(evt)
+                            {
+                                var keyCode = (evt.which) ? evt.which : evt.keyCode
+                                if ((keyCode < 65 || keyCode > 90) && (keyCode < 97 || keyCode > 123) && keyCode != 32)
+                                 
+                                return false;
+                                    return true;
+                            }
+                        </script>
 					</div>
 				</div>
 			</div>

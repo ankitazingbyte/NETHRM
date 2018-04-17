@@ -1,18 +1,8 @@
-<%= form_for @assesment, :url => admin_assesments_path, remote: true do |form| %>
-<% if @assessment.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(@assesment.errors.count, "error") %> prohibited
-      this assessment from being saved:</h2>
-    <ul>
-    <% @assesment.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
-  </div>
-  <% end %>
+<%= form_for @assesment,:url => admin_assesments_path  do |form| %>
+  <div class="modal-body">
     <div class="form-group">
       <label>Department</label>
-      <%= form.select :department_id, Department.all.map{|d| [d.name, d.id]}, class: "btn dropdown-toggle btn-default" %>
+      <%= form.select :department_id, Department.all.map{|d| [d.name, d.id]}, class: "btn dropdown-toggle btn-default", required: true %>
     </div>
 
     <div class="form-group">
@@ -32,47 +22,47 @@
 
     <div class="form-group">
         <label>Training Title</label>
-        <%= form.text_field :training_title, class: "form-control" %>
+        <%= form.text_field :training_title, class: "form-control", onKeyPress: "return ValidateAlpha(event);", required: true %>
     </div>
 
     <div class="form-group">
         <label>Training Employee</label>
-        <%= form.select :employee_id, Employee.all.map{|d| [d.first_name, d.id]}, class: "btn dropdown-toggle btn-default" %>
+        <%= form.select :employee_id, Employee.all.map{|d| [d.first_name, d.id]}, class: "btn dropdown-toggle btn-default", required: true %>
     </div>
 
     <div class="form-group">
         <label>Training Reason</label>
-        <%= form.cktext_area :training_reason, class: "form-control" %>
+        <%= form.cktext_area :training_reason, class: "form-control", required: true %>
     </div>
 
     <div class="form-group">
         <label>Preferred Trainer</label>
-        <%= form.select :trainer_id, Trainer.all.map{|e| [e.first_name, e.id]}, class: "btn dropdown-toggle btn-default" %>
+        <%= form.select :trainer_id, Trainer.all.map{|d| [d.first_name, d.id]}, class: "btn dropdown-toggle btn-default", required: true %>
     </div>
 
     <div class="form-group">
         <label>Preferred  Training Location</label>
-        <%= form.text_field :location, class: "form-control" %>
+        <%= form.text_field :location, class: "form-control", required: true %>
     </div>
 
     <div class="form-group">
         <label>Preferred  Start Date</label>
-        <%= form.text_field :start_date, class: "form-control", "data-provide" => 'datepicker' %>
+        <%= form.text_field :start_date, class: "form-control", "data-provide" => 'datepicker', required: true %>
     </div>
 
     <div class="form-group">
         <label>Preferred End Date</label>
-        <%= form.text_field :end_date, class: "form-control", "data-provide" => 'datepicker' %>
+        <%= form.text_field :end_date, class: "form-control", "data-provide" => 'datepicker', required: true %>
     </div>
 
     <div class="form-group">
         <label>Preferred  Training Cost</label>
-        <%= form.text_field :training_cost, class: "form-control" %>
+        <%= form.number_field :training_cost, class: "form-control", required: true %>
     </div>
 
     <div class="form-group">
         <label>Preferred  Travel Cost</label>
-        <%= form.text_field :travel_cost, class: "form-control" %>
+        <%= form.number_field :travel_cost, class: "form-control", required: true %>
     </div>
 
     <div class="form-group">
@@ -82,10 +72,37 @@
 
     <div class="form-group">
         <label>Training Description</label>
-        <%= form.cktext_area :description, class: "form-control" %>
+        <%= form.cktext_area :description, class: "form-control", required: true %>
     </div>
   </div>
   <div class="modal-footer">
-    <%= form.submit "update", class: "btn btn-primary" %>
+    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    <%= form.submit "Add", class: "btn btn-primary" %>
   </div>
 <% end %>
+<!-- For Alphabates Only -->
+<script type="text/javascript">
+    function isNumberKey(evt){  <!--Function to accept only numeric values-->
+    //var e = evt || window.event;
+    var charCode = (evt.which) ? evt.which : evt.keyCode
+    if (charCode != 46 && charCode > 31 
+    && (charCode < 48 || charCode > 57))
+        return false;
+        return true;
+    }
+           
+    function ValidateAlpha(evt)
+    {
+        var keyCode = (evt.which) ? evt.which : evt.keyCode
+        if ((keyCode < 65 || keyCode > 90) && (keyCode < 97 || keyCode > 123) && keyCode != 32)
+         
+        return false;
+            return true;
+    }
+</script>
+<!-- NUMERIC filed E not allow  -->
+<script>
+    $("input[type='number']").on('keydown',function(e){
+        return e.keyCode == 69 ? false : true
+    })
+</script>

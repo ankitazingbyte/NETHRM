@@ -70,6 +70,6 @@ class Admin::HolidaysController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def holiday_params
-      params.require(:holiday).permit(:date, :occasion)
+      params.require(:holiday).permit(:date, :title)
     end
 end

@@ -5,7 +5,7 @@
     <div class="p-30 p-t-none p-b-none">
         <div class="row">
             <div class="col-lg-12">
-                <div class="panel">
+                <div class="panel panel-info">
                     <div class="panel-heading">
                         <h3 class="panel-title">Employee Salary Increment</h3>
                         <button class="btn btn-success btn-sm pull-right" data-toggle="modal" data-target="#add-new-job"><i class="fa fa-plus"></i> Add salary </button>
@@ -51,7 +51,9 @@
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         <h4 class="modal-title" id="myModalLabel">Add salry</h4>
                     </div>
-                    <%= render "admin/increaments/new" %>
+                    <div class="modal-body">
+                        <%= render "admin/increaments/form" %>
+                    </div>
                 </div>
             </div>
         </div>

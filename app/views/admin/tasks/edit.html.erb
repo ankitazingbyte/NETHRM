@@ -1,5 +1,59 @@
-<h1>Editing Task</h1>
+<%= form_for @task, :url => admin_task_path do |form| %>
+	<% if @task.errors.any? %>
+	    <div id="error_explanation">
+	      <h2><%= pluralize(task.errors.count, "error") %> prohibited this task from being saved:</h2>
 
-<%= render 'form', task: @task %>
+	      <ul>
+	      <% task.errors.full_messages.each do |message| %>
+	        <li><%= message %></li>
+	      <% end %>
+	      </ul>
+	    </div>
+	<% end %>
+  	<div class="modal-body">
+      	<div class="form-group">
+          	<label>Task Title</label>
+          	<%= form.text_field :title, class: "form-control", required: true, onKeyPress: "return ValidateAlpha(event);" %>
+      	</div>
+
+      	<div class="form-group">
+          	<label>Assign To</label>
+          	<%= form.select :employee_id, Employee.all.map{|e| [e.user_name, e.id]}, class: "btn dropdown-toggle btn-default", required: true %>
+      	</div>
+
+      	<div class="form-group">
+          	<label>Start Date</label>
+          	<%= form.text_field :start_date, class: "form-control", "data-provide" => 'datepicker', required: true %>
+      	</div>
+
+      	<div class="form-group">
+          	<label>Due Date</label>
+          	<%= form.text_field :due_date, class: "form-control", "data-provide" => 'datepicker', required: true %>
+      	</div>
+
+      	<div class="form-group">
+          	<label>Estimated Hour</label>
+          	<%= form.text_field :estimated_hour, class: "form-control", required: true %>
+      	</div>
+
+      	<div class="form-group">
+          	<label>Progress</label>
+          	<%= form.text_field :progress, class: "form-control", required: true %>
+      	</div>
+
+      	<div class="form-group m-none">
+          	<label for="e20">Status</label>
+          	<%= form.select :status, %w{Pending Started Complete}, :prompt => 'Select', required: true, class: 'form-control', required: true %>
+      	</div>
+
+      	<div class="form-group">
+          	<label>Description</label>
+          	<%= form.cktext_area :description, class: "form-control", required: true %>
+      	</div>
+  	</div>
+  	<div class="modal-footer">
+      	<%= form.submit "Update", class: "btn btn-primary" %>
+  	</div>
+<% end %>
 
 <%= link_to 'Back', admin_tasks_path %>
