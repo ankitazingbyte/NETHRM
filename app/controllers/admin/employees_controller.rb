@@ -29,6 +29,7 @@ class Admin::EmployeesController < ApplicationController
   # POST /employees
   # POST /employees.json
   def create
+    debugger
     @employee = Employee.new(employee_params)
     
       if @employee.save
