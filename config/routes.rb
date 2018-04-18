@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   		resources :descussions
   		resources :tickets
   		resources :supports
+  		resources :task_files
   		resources :holidays do
     		get 'calendar_view' ,on: :collection
   		end

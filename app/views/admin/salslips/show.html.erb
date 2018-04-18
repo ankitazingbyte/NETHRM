@@ -34,8 +34,8 @@
               <td><strong class="help-split">Payment By:</strong><%= @salslip.payment_by %></td>
             </tr>
             <tr>
-              <td><strong class="help-split">Department:</strong><%= Department.where(id: @salslip.department_id)[0].name if @salslip.department_id %></td>
-              <td><strong class="help-split">Designation:</strong><%= Designation.where(id: @salslip.designation_id)[0].name if @salslip.designation_id %></td>
+              <td><strong class="help-split">Department:</strong><%#= Department.where(id: @salslip.department_id)[0].name if @salslip.department_id %></td>
+              <td><strong class="help-split">Designation:</strong><%#= Designation.where(id: @salslip.designation_id)[0].name if @salslip.designation_id %></td>
             </tr>
           </tbody>
         </table>

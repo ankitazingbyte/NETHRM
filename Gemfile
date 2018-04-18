@@ -64,7 +64,8 @@ gem 'devise'
 gem "rolify"
 gem "font-awesome-rails"
 gem 'bootstrap-select-wrapper-rails'
-gem 'pdfkit'
+# gem 'pdfkit'
+gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
 gem 'bootstrap-datepicker-rails'
 gem 'carmen-rails'

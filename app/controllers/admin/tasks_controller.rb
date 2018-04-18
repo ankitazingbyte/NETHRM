@@ -11,6 +11,8 @@ class Admin::TasksController < ApplicationController
   # GET /tasks/1
   # GET /tasks/1.json
   def show
+    @task_file = TaskFile.new
+    @task_files = TaskFile.all
     @descussion = Descussion.new
     @descussions = Descussion.all
   end

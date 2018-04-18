@@ -1,4 +1,4 @@
-class DescussionsController < ApplicationController
+class Admin::DescussionsController < ApplicationController
   before_action :set_descussion, only: [:show, :edit, :update, :destroy]
 
   # GET /descussions
@@ -25,40 +25,28 @@ class DescussionsController < ApplicationController
   # POST /descussions.json
   def create
     @descussion = Descussion.new(descussion_params)
-
-    respond_to do |format|
       if @descussion.save
-        format.html { redirect_to @descussion, notice: 'Descussion was successfully created.' }
-        format.json { render :show, status: :created, location: @descussion }
+         redirect_to action: "index", notice: 'Descussion was successfully created.'
       else
-        format.html { render :new }
-        format.json { render json: @descussion.errors, status: :unprocessable_entity }
+         render :new 
       end
-    end
   end
 
   # PATCH/PUT /descussions/1
   # PATCH/PUT /descussions/1.json
   def update
-    respond_to do |format|
       if @descussion.update(descussion_params)
-        format.html { redirect_to @descussion, notice: 'Descussion was successfully updated.' }
-        format.json { render :show, status: :ok, location: @descussion }
+        redirect_to @descussion, notice: 'Descussion was successfully updated.' 
       else
-        format.html { render :edit }
-        format.json { render json: @descussion.errors, status: :unprocessable_entity }
+        render :edit 
       end
-    end
   end
 
   # DELETE /descussions/1
   # DELETE /descussions/1.json
   def destroy
     @descussion.destroy
-    respond_to do |format|
-      format.html { redirect_to descussions_url, notice: 'Descussion was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+      redirect_to descussions_url, notice: 'Descussion was successfully destroyed.' 
   end
 
   private

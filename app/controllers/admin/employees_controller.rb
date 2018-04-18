@@ -15,7 +15,7 @@ class Admin::EmployeesController < ApplicationController
   # GET /employees/new
   def new
     @employee = Employee.new
-    @user = User.new
+    # @user = User.new
   end
 
   # GET /employees/1/edit
@@ -29,7 +29,7 @@ class Admin::EmployeesController < ApplicationController
   # POST /employees
   # POST /employees.json
   def create
-    debugger
+    # debugger
     @employee = Employee.new(employee_params)
     
       if @employee.save
@@ -67,6 +67,6 @@ class Admin::EmployeesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def employee_params
-      params.require(:employee).permit(:first_name, :image, :first_name, :last_name, :mother, :father, :employee_code, :user_name, :date_of_join, :date_of_leave, :date_of_birth, :phone, :alternative_phone, :status, :present_address, :permanent_address, :department_id, :designation_id, :gender, :tax_example, user_attributes: [:email, :password, :password_confirmation])
+      params.require(:employee).permit(:first_name, :image, :first_name, :last_name, :mother, :father, :employee_code, :user_name, :date_of_join, :date_of_leave, :date_of_birth, :phone, :alternative_phone, :status, :present_address, :permanent_address, :department_id, :designation_id, :gender, :tax_example, :email, :password, :confirm_password)
     end
 end

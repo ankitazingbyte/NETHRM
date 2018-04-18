@@ -11,6 +11,7 @@ class Admin::SalslipsController < ApplicationController
   # GET /salslips/1
   # GET /salslips/1.json
   def show
+  
   end
 
   # GET /salslips/new

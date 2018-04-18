@@ -1,10 +1,17 @@
 <section class="wrapper-bottom-sec">
-	<div class="row">
-	    <div class="panel">
-	        <div class="panel-heading">
-	            <h3 class="panel-title"> Add Employee</h3>
-	        </div>
-	        <%= render 'form', employee: @employee %>
-	    </div>
+    <div class="p-30">
+        <h2 class="page-title">Add Employee</h2>
+    </div>
+    <div class="p-30 p-t-none p-b-none">
+		<div class="row">
+		    <div class="panel panel-info">
+		        <div class="panel-heading">
+		            <h3 class="panel-title"> Add Employee</h3>
+		        </div><br>
+		        <div class="panel-body">
+		        	<%= render 'form', employee: @employee %>
+		    	</div>
+		    </div>
+		</div>
 	</div>
 </section>
